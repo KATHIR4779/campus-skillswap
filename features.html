@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5b7cfa">
+  <title>My Ledger — Campus SkillSwap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="./index.html" aria-label="Campus SkillSwap home">
+      <span class="logo-mark">⏳</span>
+      <span class="logo-text">Campus SkillSwap</span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="./index.html">Home</a>
+      <a href="./about.html">Our Mission</a>
+      <a href="./resources.html">Skill Marketplace</a>
+      <a href="./features.html" class="active">My Ledger</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main id="ledgerApp">
+    <section class="page-hero">
+      <h1>My Ledger</h1>
+      <p class="muted">Track your Time Credits, manage your skills, and message with peers.</p>
+    </section>
+
+    <section class="ledger-grid">
+      <div class="panel balance">
+        <h2>Time Credits</h2>
+        <div class="balance-display">
+          <span class="credits" id="credits">0</span>
+          <span class="unit">credits</span>
+        </div>
+        <div class="balance-actions">
+          <button class="btn" id="earnBtn" title="Mock earning one credit">+ Earn 1</button>
+          <button class="btn" id="spendBtn" title="Mock spending one credit">- Spend 1</button>
+        </div>
+        <p class="help muted">Tip: Credits update locally on your device.</p>
+      </div>
+
+      <div class="panel skills">
+        <div class="panel-header">
+          <h2>Skills I Offer</h2>
+        </div>
+        <form id="addSkillForm" class="inline-form" autocomplete="off">
+          <input type="text" id="skillTitle" placeholder="Add a skill (e.g., Guitar Basics)" aria-label="Skill title" required>
+          <select id="skillCategory" aria-label="Category">
+            <option>Academics</option>
+            <option>Arts</option>
+            <option>Tech</option>
+            <option>Life Skills</option>
+          </select>
+          <button class="btn primary" type="submit">Add</button>
+        </form>
+        <ul id="skillsList" class="pill-list"></ul>
+      </div>
+
+      <div class="panel transactions">
+        <div class="panel-header">
+          <h2>Transaction History</h2>
+        </div>
+        <table class="table">
+          <thead>
+            <tr><th>Date</th><th>Type</th><th>With</th><th>Skill</th><th>Amount</th></tr>
+          </thead>
+          <tbody id="txnBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel messages">
+        <div class="panel-header">
+          <h2>Messages</h2>
+        </div>
+        <div class="messages-grid">
+          <aside class="conversations" aria-label="Conversations">
+            <ul id="conversationList"></ul>
+            <form id="newConversationForm" class="inline-form small">
+              <input type="text" id="newRecipient" placeholder="Start chat (name)" aria-label="Recipient name">
+              <button class="btn" type="submit">Start</button>
+            </form>
+          </aside>
+          <section class="thread" aria-label="Message thread">
+            <div id="threadHeader" class="thread-header">Select a conversation</div>
+            <div id="threadBody" class="thread-body"></div>
+            <form id="messageForm" class="inline-form" style="display:none;">
+              <input type="text" id="messageInput" placeholder="Type a message" aria-label="Message">
+              <button class="btn primary" type="submit">Send</button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Campus SkillSwap</p>
+    <div class="footer-links">
+      <a href="./resources.html">Marketplace</a>
+      <a href="./contact.html">Support</a>
+    </div>
+  </footer>
+
+  <script src="./assets/js/api.js" defer></script>
+  <script src="./assets/js/app.js" defer></script>
+  <script src="./assets/js/ledger.js" defer></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{document.getElementById('year').textContent=new Date().getFullYear();});</script>
+</body>
+</html>

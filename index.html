@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus SkillSwap - Learn & Teach Skills with Time Credits</title>
+    <meta name="description" content="A peer-to-peer learning platform for college students where time is currency. Teach skills, earn credits, learn from peers.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Campus SkillSwap</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-auth">
+                    <button class="btn btn-outline" id="login-btn">Login</button>
+                    <button class="btn btn-primary" id="register-btn">Register</button>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Learn & Teach Skills with 
+                    <span class="highlight">Time Credits</span>
+                </h1>
+                <p class="hero-description">
+                    A peer-to-peer learning platform exclusively for college students. 
+                    Teach skills to earn credits, use credits to learn new skills. 
+                    No money, just knowledge exchange.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Active Students</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Skills Available</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">2000+</div>
+                        <div class="stat-label">Sessions Completed</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large" id="get-started-btn">
+                        <i class="fas fa-rocket"></i>
+                        Get Started
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="skill-cards">
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <span>Python Programming</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-music"></i>
+                        <span>Guitar Lessons</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-palette"></i>
+                        <span>Digital Art</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Conversation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How Campus SkillSwap Works</h2>
+                <p>Simple steps to start your learning journey</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="step-number">1</div>
+                    <h3>Register & Verify</h3>
+                    <p>Sign up with your university email and verify your student status. Get 2 free Time Credits to start!</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <div class="step-number">2</div>
+                    <h3>List Your Skills</h3>
+                    <p>Add skills you can teach - from academics to arts, coding to cooking. Set your availability and preferences.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="step-number">3</div>
+                    <h3>Browse & Request</h3>
+                    <p>Explore the marketplace, find skills you want to learn, and request sessions with other students.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="step-number">4</div>
+                    <h3>Learn & Earn</h3>
+                    <p>Attend sessions, teach others, and watch your Time Credits grow. Build your reputation through reviews.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Campus SkillSwap?</h2>
+                <p>Designed specifically for college students in Coimbatore</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>No Money Required</h3>
+                    <p>Learn any skill without spending money. Time is your only currency - teach to earn, learn to spend.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Peer-to-Peer Learning</h3>
+                    <p>Connect with fellow students across departments. Break social silos and build lasting friendships.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safe & Verified</h3>
+                    <p>University email verification ensures only students can join. Safe meeting locations on campus.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Trust & Reputation</h3>
+                    <p>Rating and review system builds trust. See feedback from previous sessions before booking.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Local Focus</h3>
+                    <p>Tailored for Coimbatore students with local skills like Tamil, Kongu cuisine, and regional arts.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Easy to Use</h3>
+                    <p>Intuitive interface available in English and Tamil. Mobile-friendly design for learning on the go.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Skills Section -->
+    <section id="marketplace" class="popular-skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Skills in Coimbatore</h2>
+                <p>Discover what your peers are teaching and learning</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-code"></i>
+                        <div class="skill-info">
+                            <h3>Python Programming</h3>
+                            <div class="skill-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(4.8)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Learn Python from basics to advanced concepts. Perfect for beginners and those preparing for coding interviews.</p>
+                    <div class="skill-meta">
+                        <span class="skill-teacher">by Rajesh K.</span>
+                        <span class="skill-credits">2 Credits/hour</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-music"></i>
+                        <div class="skill-info">
+                            <h3>Carnatic Vocal Basics</h3>
+                            <div class="skill-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>(4.6)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Introduction to Carnatic music fundamentals, basic ragas, and traditional compositions.</p>
+                    <div class="skill-meta">
+                        <span class="skill-teacher">by Priya M.</span>
+                        <span class="skill-credits">1 Credit/hour</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-language"></i>
+                        <div class="skill-info">
+                            <h3>Conversational Tamil</h3>
+                            <div class="skill-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(4.9)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Learn to speak Tamil fluently with focus on Kongu dialect and local expressions.</p>
+                    <div class="skill-meta">
+                        <span class="skill-teacher">by Arjun S.</span>
+                        <span class="skill-credits">1 Credit/hour</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-utensils"></i>
+                        <div class="skill-info">
+                            <h3>Kongu Cuisine</h3>
+                            <div class="skill-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>(4.7)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Master traditional Kongu Nadu recipes including authentic filter coffee and local delicacies.</p>
+                    <div class="skill-meta">
+                        <span class="skill-teacher">by Lakshmi R.</span>
+                        <span class="skill-credits">2 Credits/hour</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-calculator"></i>
+                        <div class="skill-info">
+                            <h3>GATE Preparation</h3>
+                            <div class="skill-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(4.8)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Comprehensive GATE exam preparation with focus on quantitative aptitude and technical subjects.</p>
+                    <div class="skill-meta">
+                        <span class="skill-teacher">by Vikram N.</span>
+                        <span class="skill-credits">3 Credits/hour</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-palette"></i>
+                        <div class="skill-info">
+                            <h3>Digital Art & Design</h3>
+                            <div class="skill-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>(4.5)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Learn digital illustration, graphic design, and creative tools like Photoshop and Illustrator.</p>
+                    <div class="skill-meta">
+                        <span class="skill-teacher">by Meera K.</span>
+                        <span class="skill-credits">2 Credits/hour</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-actions">
+                <button class="btn btn-primary btn-large" id="browse-all-btn">
+                    <i class="fas fa-th-large"></i>
+                    Browse All Skills
+                </button>
+          </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+      <div class="section-header">
+                <h2>What Students Say</h2>
+                <p>Real experiences from our community</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Campus SkillSwap helped me learn Python without spending money. Now I'm teaching others and earning credits for more skills!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Rahul Sharma</h4>
+                            <span>Computer Science, 3rd Year</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"I love teaching Carnatic music and learning new languages. The platform connects me with amazing people across different departments."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Menon</h4>
+                            <span>Electronics, 2nd Year</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The GATE preparation sessions were incredibly helpful. I cleared the exam and now I'm helping others achieve their goals too!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Vikram Nair</h4>
+                            <span>Mechanical Engineering, Alumnus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Learning Journey?</h2>
+                <p>Join hundreds of students already exchanging skills and building connections on Campus SkillSwap.</p>
+      <div class="cta-actions">
+                    <button class="btn btn-primary btn-large" id="join-now-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Join Now - It's Free!
+                    </button>
+                    <div class="cta-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>2 Free Time Credits</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>University Email Required</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Safe & Verified Community</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Campus SkillSwap</span>
+                    </div>
+                    <p>Empowering students to learn and teach through peer-to-peer skill exchange.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="#marketplace">Browse Skills</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Report Issue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@campusskillswap.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Coimbatore, Tamil Nadu</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Campus SkillSwap. All rights reserved. | Designed for Coimbatore Students</p>
+            </div>
+    </div>
+  </footer>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to Campus SkillSwap</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">University Email</label>
+                        <input type="email" id="login-email" name="email" placeholder="regno@hicet.ac.in" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Don't have an account? <a href="#" id="switch-to-register">Register here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join Campus SkillSwap</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">University Email</label>
+                        <input type="email" id="register-email" name="email" placeholder="regno@hicet.ac.in" required>
+                        <small>Only university email addresses are accepted</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-major">Major/Department</label>
+                        <input type="text" id="register-major" name="major" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-year">Year of Study</label>
+                        <select id="register-year" name="year" required>
+                            <option value="">Select Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                            <option value="5">5th Year</option>
+                            <option value="postgrad">Postgraduate</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirm Password</label>
+                        <input type="password" id="register-confirm-password" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Already have an account? <a href="#" id="switch-to-login">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

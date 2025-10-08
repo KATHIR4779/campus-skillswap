@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5b7cfa">
+  <title>Skill Marketplace — Campus SkillSwap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="./index.html" aria-label="Campus SkillSwap home">
+      <span class="logo-mark">⏳</span>
+      <span class="logo-text">Campus SkillSwap</span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="./index.html">Home</a>
+      <a href="./about.html">Our Mission</a>
+      <a href="./resources.html" class="active">Skill Marketplace</a>
+      <a href="./features.html">My Ledger</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1>Skill Marketplace</h1>
+      <p class="muted">Browse all skills offered by students—filter by category or search.</p>
+      <form id="marketSearch" class="search-bar compact">
+        <input id="marketQuery" type="search" placeholder="Search skills (e.g., Python, Calculus, Piano)">
+        <button class="btn" type="submit">Search</button>
+      </form>
+      <div class="chips" role="tablist" aria-label="Categories">
+        <button class="chip active" data-cat="All" role="tab" aria-selected="true">All</button>
+        <button class="chip" data-cat="Academics" role="tab">Academics</button>
+        <button class="chip" data-cat="Arts" role="tab">Arts</button>
+        <button class="chip" data-cat="Tech" role="tab">Tech</button>
+        <button class="chip" data-cat="Life Skills" role="tab">Life Skills</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div id="results" class="card-grid" aria-live="polite"></div>
+      <div id="emptyState" class="empty" hidden>
+        <p>No matches found. Try another search or category.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Campus SkillSwap</p>
+    <div class="footer-links">
+      <a href="./features.html">My Ledger</a>
+      <a href="./contact.html">Support</a>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="./assets/js/api.js" defer></script>
+  <script src="./assets/js/app.js" defer></script>
+  <script src="./assets/js/marketplace.js" defer></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{document.getElementById('year').textContent=new Date().getFullYear();});</script>
+</body>
+</html>

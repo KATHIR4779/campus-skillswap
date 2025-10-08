@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Campus SkillSwap</title>
+    <meta name="description" content="Your personal dashboard on Campus SkillSwap. Manage your skills, sessions, credits, and learning journey.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Campus SkillSwap</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-auth" id="nav-auth">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <section class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-hero">
+                <div class="user-welcome">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <h1 id="welcome-name">Welcome back!</h1>
+                        <p id="user-details">Loading your profile...</p>
+                    </div>
+                </div>
+                <div class="user-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="time-credits">0</div>
+                            <div class="stat-label">Time Credits</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="user-rating">0.0</div>
+                            <div class="stat-label">Your Rating</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="skills-taught">0</div>
+                            <div class="stat-label">Skills Taught</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="skills-learned">0</div>
+                            <div class="stat-label">Skills Learned</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-content">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Left Column -->
+                <div class="dashboard-left">
+                    <!-- Quick Actions -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Quick Actions</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="quick-actions">
+                                <button class="action-btn" id="add-skill-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add New Skill</span>
+                                </button>
+                                <button class="action-btn" id="browse-skills-btn">
+                                    <i class="fas fa-search"></i>
+                                    <span>Browse Skills</span>
+                                </button>
+                                <button class="action-btn" id="view-messages-btn">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Messages</span>
+                                    <span class="notification-badge" id="message-count">3</span>
+                                </button>
+                                <button class="action-btn" id="earn-credits-btn">
+                                    <i class="fas fa-coins"></i>
+                                    <span>Earn Credits</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- My Skills -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>My Skills</h2>
+                            <button class="btn btn-outline btn-small" id="manage-skills-btn">Manage</button>
+                        </div>
+                        <div class="card-content">
+                            <div class="my-skills" id="my-skills-list">
+                                <!-- Skills will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Recent Activity</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="activity-feed" id="activity-feed">
+                                <!-- Activity will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="dashboard-right">
+                    <!-- Upcoming Sessions -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Upcoming Sessions</h2>
+                            <button class="btn btn-outline btn-small" id="view-all-sessions-btn">View All</button>
+                        </div>
+                        <div class="card-content">
+                            <div class="sessions-list" id="upcoming-sessions">
+                                <!-- Sessions will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pending Requests -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Pending Requests</h2>
+                            <span class="notification-badge" id="pending-requests-count">2</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="pending-requests" id="pending-requests">
+                                <!-- Requests will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Learning Progress -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Learning Progress</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="progress-chart">
+                                <canvas id="progress-chart" width="300" height="200"></canvas>
+                            </div>
+                            <div class="progress-stats">
+                                <div class="progress-item">
+                                    <span class="progress-label">Sessions Completed</span>
+                                    <span class="progress-value" id="sessions-completed">12</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">Hours Taught</span>
+                                    <span class="progress-value" id="hours-taught">24</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">Hours Learned</span>
+                                    <span class="progress-value" id="hours-learned">18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Campus SkillSwap</span>
+                    </div>
+                    <p>Empowering students to learn and teach through peer-to-peer skill exchange.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="marketplace.html">Browse Skills</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Report Issue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@campusskillswap.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Coimbatore, Tamil Nadu</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Campus SkillSwap. All rights reserved. | Designed for Coimbatore Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add Skill Modal -->
+    <div id="add-skill-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Skill</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-skill-form">
+                    <div class="form-group">
+                        <label for="skill-title">Skill Title</label>
+                        <input type="text" id="skill-title" name="title" placeholder="e.g., Python Programming" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="skill-category">Category</label>
+                        <select id="skill-category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Academics">Academics</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Language">Language</option>
+                            <option value="Life Skills">Life Skills</option>
+                            <option value="Sports">Sports</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="skill-description">Description</label>
+                        <textarea id="skill-description" name="description" rows="4" placeholder="Describe what you'll teach and what students will learn..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="skill-credits">Credits per Hour</label>
+                        <select id="skill-credits" name="credits" required>
+                            <option value="1">1 Credit</option>
+                            <option value="2">2 Credits</option>
+                            <option value="3">3 Credits</option>
+                            <option value="4">4 Credits</option>
+                            <option value="5">5 Credits</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="skill-tags">Tags (comma-separated)</label>
+                        <input type="text" id="skill-tags" name="tags" placeholder="e.g., programming, python, beginners">
+                    </div>
+                    <div class="form-group">
+                        <label for="skill-availability">Availability</label>
+                        <div class="availability-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="availability" value="weekdays"> Weekdays
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="availability" value="weekends"> Weekends
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="availability" value="evenings"> Evenings
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Add Skill</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Detail Modal -->
+    <div id="session-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Session Details</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="session-info" id="session-info">
+                    <!-- Session details will be populated -->
+                </div>
+                <div class="session-actions" id="session-actions">
+                    <!-- Session actions will be populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages Modal -->
+    <div id="messages-modal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Messages</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="messages-container">
+                    <div class="messages-sidebar">
+                        <div class="messages-list" id="messages-list">
+                            <!-- Messages will be populated -->
+                        </div>
+                    </div>
+                    <div class="messages-content">
+                        <div class="message-header" id="message-header">
+                            <!-- Message header will be populated -->
+                        </div>
+                        <div class="message-conversation" id="message-conversation">
+                            <!-- Conversation will be populated -->
+                        </div>
+                        <div class="message-input">
+                            <input type="text" id="message-input" placeholder="Type your message...">
+                            <button class="btn btn-primary" id="send-message-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
