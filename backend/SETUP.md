@@ -63,7 +63,7 @@ CORS_ORIGIN=http://localhost:3000,http://127.0.0.1:5500
 
 # Admin Configuration
 ADMIN_EMAIL=admin@campusskillswap.com
-ADMIN_PASSWORD=admin123456
+ADMIN_PASSWORD=asdmin_pass
 
 # Rate Limiting
 RATE_LIMIT_WINDOW_MS=900000
