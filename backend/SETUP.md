@@ -164,7 +164,7 @@ You should see:
    - Copy connection string
    - Update `.env` file:
      ```env
-     MONGODB_URI=mongodb+srv://kathir4779:tllqq6SJYdVeDI2C@cluster.mongodb.net/campus_skillswap
+     MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/campus_skillswap
      ```
 
 ### Email Configuration
