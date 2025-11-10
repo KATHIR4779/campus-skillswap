@@ -21,7 +21,7 @@ const createAdminUser = async () => {
       console.log('Is Verified:', existingAdmin.isVerified);
       
       // Update password and ensure admin role
-      existingAdmin.password = 'Skillswap@123';
+      existingAdmin.password = 'Pass';
       existingAdmin.role = 'admin';
       existingAdmin.isActive = true;
       existingAdmin.isVerified = true;
