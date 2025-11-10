@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Skill - Campus SkillSwap</title>
+    <meta name="description" content="Share your knowledge and add a new skill to the Campus SkillSwap marketplace.">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔄</text></svg>">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Campus SkillSwap</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="messages.html" class="nav-link">Messages</a>
+                <a href="help.html" class="nav-link">Help</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-auth" id="nav-auth">
+                    <button class="btn btn-theme" id="theme-btn" title="Toggle theme">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add Skill Header -->
+    <section class="add-skill-header">
+        <div class="container">
+            <div class="add-skill-hero">
+                <div class="hero-content">
+                    <a href="dashboard.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Dashboard
+                    </a>
+                    <h1>Add New Skill</h1>
+                    <p>Share your knowledge and help others learn. Fill out the form below to add your skill to the marketplace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Skill Form -->
+    <section class="add-skill-content">
+        <div class="container">
+            <div class="form-container">
+                <form id="add-skill-form" class="add-skill-form">
+                    <div class="form-section">
+                        <h3>Basic Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="skill-title">Skill Title *</label>
+                            <input type="text" id="skill-title" name="title" placeholder="e.g., Python Programming" required>
+                            <small>Choose a clear, descriptive title for your skill</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="skill-category">Category *</label>
+                            <select id="skill-category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Academics">Academics</option>
+                                <option value="Arts">Arts</option>
+                                <option value="Language">Language</option>
+                                <option value="Life Skills">Life Skills</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Music">Music</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="skill-description">Description *</label>
+                            <textarea id="skill-description" name="description" rows="4" placeholder="Describe what you'll teach and what students will learn..." required></textarea>
+                            <small>Provide detailed information about the skill and what students can expect to learn</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="skill-level">Skill Level</label>
+                            <select id="skill-level" name="level">
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Pricing & Location</h3>
+                        
+                        <div class="form-group">
+                            <label for="skill-credits">Credits per Hour *</label>
+                            <select id="skill-credits" name="creditsPerHour" required>
+                                <option value="1">1 Credit</option>
+                                <option value="2" selected>2 Credits</option>
+                            </select>
+                            <small>Set the number of credits students need to pay per hour for your session</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="skill-location">Location</label>
+                            <select id="skill-location" name="location">
+                                <option value="campus-library">Campus Library</option>
+                                <option value="campus-cafeteria">Campus Cafeteria</option>
+                                <option value="study-rooms">Study Rooms</option>
+                                <option value="online">Online</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Additional Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="skill-tags">Tags</label>
+                            <input type="text" id="skill-tags" name="tags" placeholder="e.g., programming, python, beginners">
+                            <small>Add comma-separated tags to help students find your skill</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="max-students">Maximum Students per Session</label>
+                            <select id="max-students" name="maxStudents">
+                                <option value="1">1 Student</option>
+                                <option value="2">2 Students</option>
+                                <option value="3">3 Students</option>
+                                <option value="4">4 Students</option>
+                                <option value="5">5 Students</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="session-duration">Session Duration (minutes)</label>
+                            <select id="session-duration" name="sessionDuration">
+                                <option value="30">30 minutes</option>
+                                <option value="60" selected>1 hour</option>
+                                <option value="90">1.5 hours</option>
+                                <option value="120">2 hours</option>
+                                <option value="180">3 hours</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Availability</h3>
+                        
+                        <div class="form-group">
+                            <label>Available Days</label>
+                            <div class="availability-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="availableDays" value="monday" id="day-monday"> Monday
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="availableDays" value="tuesday" id="day-tuesday"> Tuesday
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="availableDays" value="wednesday" id="day-wednesday"> Wednesday
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="availableDays" value="thursday" id="day-thursday"> Thursday
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="availableDays" value="friday" id="day-friday"> Friday
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="availableDays" value="saturday" id="day-saturday"> Saturday
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="availableDays" value="sunday" id="day-sunday"> Sunday
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Available Times</label>
+                            <div class="time-schedule" id="time-schedule">
+                                <p class="time-help-text">Select days above to specify your available times for each day.</p>
+                                
+                                <!-- Monday Time Slots -->
+                                <div class="day-time-section" id="monday-times" style="display: none;">
+                                    <h4>Monday</h4>
+                                    <div class="time-input-row">
+                                        <div class="time-input-group">
+                                            <label>Start Time</label>
+                                            <input type="time" name="mondayStartTime" id="monday-start">
+                                        </div>
+                                        <div class="time-input-group">
+                                            <label>End Time</label>
+                                            <input type="time" name="mondayEndTime" id="monday-end">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tuesday Time Slots -->
+                                <div class="day-time-section" id="tuesday-times" style="display: none;">
+                                    <h4>Tuesday</h4>
+                                    <div class="time-input-row">
+                                        <div class="time-input-group">
+                                            <label>Start Time</label>
+                                            <input type="time" name="tuesdayStartTime" id="tuesday-start">
+                                        </div>
+                                        <div class="time-input-group">
+                                            <label>End Time</label>
+                                            <input type="time" name="tuesdayEndTime" id="tuesday-end">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Wednesday Time Slots -->
+                                <div class="day-time-section" id="wednesday-times" style="display: none;">
+                                    <h4>Wednesday</h4>
+                                    <div class="time-input-row">
+                                        <div class="time-input-group">
+                                            <label>Start Time</label>
+                                            <input type="time" name="wednesdayStartTime" id="wednesday-start">
+                                        </div>
+                                        <div class="time-input-group">
+                                            <label>End Time</label>
+                                            <input type="time" name="wednesdayEndTime" id="wednesday-end">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Thursday Time Slots -->
+                                <div class="day-time-section" id="thursday-times" style="display: none;">
+                                    <h4>Thursday</h4>
+                                    <div class="time-input-row">
+                                        <div class="time-input-group">
+                                            <label>Start Time</label>
+                                            <input type="time" name="thursdayStartTime" id="thursday-start">
+                                        </div>
+                                        <div class="time-input-group">
+                                            <label>End Time</label>
+                                            <input type="time" name="thursdayEndTime" id="thursday-end">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Friday Time Slots -->
+                                <div class="day-time-section" id="friday-times" style="display: none;">
+                                    <h4>Friday</h4>
+                                    <div class="time-input-row">
+                                        <div class="time-input-group">
+                                            <label>Start Time</label>
+                                            <input type="time" name="fridayStartTime" id="friday-start">
+                                        </div>
+                                        <div class="time-input-group">
+                                            <label>End Time</label>
+                                            <input type="time" name="fridayEndTime" id="friday-end">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Saturday Time Slots -->
+                                <div class="day-time-section" id="saturday-times" style="display: none;">
+                                    <h4>Saturday</h4>
+                                    <div class="time-input-row">
+                                        <div class="time-input-group">
+                                            <label>Start Time</label>
+                                            <input type="time" name="saturdayStartTime" id="saturday-start">
+                                        </div>
+                                        <div class="time-input-group">
+                                            <label>End Time</label>
+                                            <input type="time" name="saturdayEndTime" id="saturday-end">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sunday Time Slots -->
+                                <div class="day-time-section" id="sunday-times" style="display: none;">
+                                    <h4>Sunday</h4>
+                                    <div class="time-input-row">
+                                        <div class="time-input-group">
+                                            <label>Start Time</label>
+                                            <input type="time" name="sundayStartTime" id="sunday-start">
+                                        </div>
+                                        <div class="time-input-group">
+                                            <label>End Time</label>
+                                            <input type="time" name="sundayEndTime" id="sunday-end">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <small>Specify the exact times you're available for each selected day</small>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.location.href='dashboard.html'">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Add Skill
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Campus SkillSwap</span>
+                    </div>
+                    <p>Empowering students to learn and teach through peer-to-peer skill exchange.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="marketplace.html">Browse Skills</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="admin.html" class="admin-link"><i class="fas fa-shield-alt"></i> Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Report Issue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@campusskillswap.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Coimbatore, Tamil Nadu</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script>
+        // Immediate authentication check - redirect if not logged in
+        function checkAuthenticationAndRedirect() {
+            const token = localStorage.getItem('access_token') || localStorage.getItem('authToken');
+            
+            if (!token) {
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            const userData = localStorage.getItem('userData') || 
+                            localStorage.getItem('current_user') || 
+                            localStorage.getItem('campusSkillSwapUser');
+            
+            if (!userData) {
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            try {
+                const user = JSON.parse(userData);
+                if (!user || !user.email || user.email === 'test@example.com') {
+                    window.location.href = 'login.html';
+                    return false;
+                }
+            } catch (e) {
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            return true;
+        }
+        
+        if (!checkAuthenticationAndRedirect()) {
+            throw new Error('Authentication required');
+        }
+    </script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/add-skill.js"></script>
+</body>
+</html>

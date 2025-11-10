@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Campus SkillSwap</title>
+    <meta name="description" content="View and manage your Campus SkillSwap profile. Update your information, skills, and preferences.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Campus SkillSwap</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="profile.html" class="nav-link active">Profile</a>
+                <a href="messages.html" class="nav-link">Messages</a>
+                <a href="help.html" class="nav-link">Help</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-auth" id="nav-auth">
+                    <button class="btn btn-theme" id="theme-btn" title="Toggle theme">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <section class="profile-header">
+        <div class="container">
+            <div class="profile-hero">
+                <div class="profile-avatar-section">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user" id="profile-avatar-icon"></i>
+                        <div class="avatar-overlay">
+                            <button class="btn btn-outline btn-small" id="change-avatar-btn">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="profile-basic-info">
+                        <h1 id="profile-name">Loading...</h1>
+                        <p id="profile-major">Major, Year</p>
+                        <div class="profile-rating">
+                            <div class="stars" id="profile-stars">
+                                <!-- Stars will be populated -->
+                            </div>
+                            <span id="profile-rating-text">(0.0)</span>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="profile-credits">0</span>
+                                <span class="stat-label">Time Credits</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="profile-sessions">0</span>
+                                <span class="stat-label">Sessions</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="profile-students">0</span>
+                                <span class="stat-label">Students</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-primary" id="edit-profile-btn">
+                        <i class="fas fa-edit"></i>
+                        Edit Profile
+                    </button>
+                    <button class="btn btn-outline" id="share-profile-btn">
+                        <i class="fas fa-share"></i>
+                        Share Profile
+                    </button>
+                    <button class="btn btn-outline" id="profile-theme-toggle-btn" title="Toggle Theme">
+                        <i class="fas fa-sun" id="profile-theme-icon"></i>
+                        <span id="profile-theme-text">Light</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="profile-content">
+        <div class="container">
+            <div class="profile-grid">
+                <!-- Left Column -->
+                <div class="profile-left">
+                    <!-- Profile Information -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Profile Information</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Full Name</label>
+                                    <span id="info-name">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>University Email</label>
+                                    <span id="info-email">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Major/Department</label>
+                                    <span id="info-major">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Year of Study</label>
+                                    <span id="info-year">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>University</label>
+                                    <span id="info-university">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Member Since</label>
+                                    <span id="info-member-since">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bio & Interests -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Bio & Interests</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="bio-section">
+                                <h3>About Me</h3>
+                                <p id="profile-bio">No bio available. Click edit to add your bio.</p>
+                            </div>
+                            <div class="interests-section">
+                                <h3>Interests</h3>
+                                <div class="interests-tags" id="profile-interests">
+                                    <!-- Interests will be populated -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Teaching Preferences -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Teaching Preferences</h2>
+                            <button class="btn btn-outline btn-small" id="edit-preferences-btn">Edit</button>
+                        </div>
+                        <div class="card-content">
+                            <div class="preferences-grid">
+                                <div class="preference-item">
+                                    <label>Preferred Meeting Location</label>
+                                    <span id="pref-location">Campus Library</span>
+                                </div>
+                                <div class="preference-item">
+                                    <label>Available Days</label>
+                                    <span id="pref-days">Weekdays, Weekends</span>
+                                </div>
+                                <div class="preference-item">
+                                    <label>Preferred Time</label>
+                                    <span id="pref-time">Evenings</span>
+                                </div>
+                                <div class="preference-item">
+                                    <label>Session Duration</label>
+                                    <span id="pref-duration">1-2 hours</span>
+                                </div>
+                                <div class="preference-item">
+                                    <label>Available Time Slots</label>
+                                    <span id="pref-available-times">09:00-12:00, 14:00-17:00, 19:00-21:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="profile-right">
+                    <!-- My Skills -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>My Skills</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="skills-list" id="profile-skills-list">
+                                <!-- Skills will be populated -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Recent Activity</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="activity-timeline" id="profile-activity">
+                                <!-- Activity will be populated -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews & Ratings -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Reviews & Ratings</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="reviews-summary">
+                                <div class="rating-breakdown">
+                                    <div class="rating-item">
+                                        <span class="rating-label">Teaching Quality</span>
+                                        <div class="rating-bar">
+                                            <div class="rating-fill" style="width: 90%"></div>
+                                        </div>
+                                        <span class="rating-value">4.5</span>
+                                    </div>
+                                    <div class="rating-item">
+                                        <span class="rating-label">Communication</span>
+                                        <div class="rating-bar">
+                                            <div class="rating-fill" style="width: 85%"></div>
+                                        </div>
+                                        <span class="rating-value">4.2</span>
+                                    </div>
+                                    <div class="rating-item">
+                                        <span class="rating-label">Punctuality</span>
+                                        <div class="rating-bar">
+                                            <div class="rating-fill" style="width: 95%"></div>
+                                        </div>
+                                        <span class="rating-value">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recent-reviews" id="profile-recent-reviews">
+                                <!-- Recent reviews will be populated -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Achievements</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="achievements-grid" id="profile-achievements">
+                                <!-- Achievements will be populated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Campus SkillSwap</span>
+                    </div>
+                    <p>Empowering students to learn and teach through peer-to-peer skill exchange.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="marketplace.html">Browse Skills</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="admin.html" class="admin-link"><i class="fas fa-shield-alt"></i> Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="help.html#safety">Safety Guidelines</a></li>
+                        <li><a href="help.html#troubleshooting">Troubleshooting</a></li>
+                        <li><a href="contact.html">Report Issue</a></li>
+                        <li><a href="admin.html">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@campusskillswap.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Coimbatore, Tamil Nadu</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-profile-form">
+                    <div class="form-section">
+                        <h3>Basic Information</h3>
+                        <div class="form-group">
+                            <label for="edit-name">Full Name</label>
+                            <input type="text" id="edit-name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-major">Major/Department</label>
+                            <input type="text" id="edit-major" name="major" autocomplete="organization-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-year">Year of Study</label>
+                            <select id="edit-year" name="year" autocomplete="off" required>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                                <option value="5th Year">5th Year</option>
+                                <option value="Postgraduate">Postgraduate</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Bio & Interests</h3>
+                        <div class="form-group">
+                            <label for="edit-bio">About Me</label>
+                            <textarea id="edit-bio" name="bio" rows="4" placeholder="Tell others about yourself, your interests, and what you're passionate about..." autocomplete="off"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-interests">Interests (comma-separated)</label>
+                            <input type="text" id="edit-interests" name="interests" placeholder="e.g., Programming, Music, Sports, Cooking" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Teaching Preferences</h3>
+                        <div class="form-group">
+                            <label for="edit-profile-location">Preferred Meeting Location</label>
+                            <select id="edit-profile-location" name="location" autocomplete="off">
+                                <option value="campus-library">Campus Library</option>
+                                <option value="campus-cafeteria">Campus Cafeteria</option>
+                                <option value="study-rooms">Study Rooms</option>
+                                <option value="online">Online Only</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label id="edit-days-label">Available Days</label>
+                            <div class="checkbox-group" aria-labelledby="edit-days-label">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="edit-days-weekdays" name="days" value="weekdays"> Weekdays
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="edit-days-weekends" name="days" value="weekends"> Weekends
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="edit-days-evenings" name="days" value="evenings"> Evenings
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-profile-duration">Preferred Session Duration</label>
+                            <select id="edit-profile-duration" name="duration" autocomplete="off">
+                                <option value="30min">30 minutes</option>
+                                <option value="1hour">1 hour</option>
+                                <option value="2hours">2 hours</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancel-edit-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Avatar Modal -->
+    <div id="change-avatar-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Change Avatar</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-upload-section">
+                    <div class="upload-area" id="avatar-upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload or drag and drop</p>
+                        <p class="upload-hint">PNG, JPG, GIF up to 5MB</p>
+                        <input type="file" id="avatar-file-input" accept="image/*" aria-label="Upload profile image" style="display: none;">
+                    </div>
+                    <div class="uploaded-image-preview" id="image-preview" style="display: none;">
+                        <img id="preview-img" src="" alt="Preview">
+                        <button type="button" class="btn btn-outline btn-small" id="remove-image-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                
+                <div class="avatar-options">
+                    <h4>Choose from predefined avatars:</h4>
+                    <div class="avatar-grid">
+                        <div class="avatar-option" data-avatar="user">
+                            <i class="fas fa-user"></i>
+                            <span>Default</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="graduation-cap">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Student</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="code">
+                            <i class="fas fa-code"></i>
+                            <span>Developer</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="music">
+                            <i class="fas fa-music"></i>
+                            <span>Musician</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="paint-brush">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Artist</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="book">
+                            <i class="fas fa-book"></i>
+                            <span>Scholar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancel-avatar-btn">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-avatar-btn">Save Avatar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Preferences Modal -->
+    <div id="edit-preferences-modal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Edit Teaching Preferences</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-preferences-form">
+                    <div class="form-group">
+                        <label for="edit-preferences-location">Preferred Meeting Location</label>
+                        <select id="edit-preferences-location" name="location" autocomplete="off">
+                            <option value="campus-library">Campus Library</option>
+                            <option value="campus-cafeteria">Campus Cafeteria</option>
+                            <option value="study-rooms">Study Rooms</option>
+                            <option value="online">Online Only</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label id="edit-preferences-days-label">Available Days</label>
+                        <div class="checkbox-group" aria-labelledby="edit-preferences-days-label">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="edit-preferences-days-weekdays" name="days" value="weekdays"> Weekdays
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="edit-preferences-days-weekends" name="days" value="weekends"> Weekends
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-time">Preferred Time</label>
+                        <select id="edit-time" name="time" autocomplete="off">
+                            <option value="morning">Morning (6:00-12:00)</option>
+                            <option value="afternoon">Afternoon (12:00-18:00)</option>
+                            <option value="evening">Evening (18:00-22:00)</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-preferences-duration">Session Duration</label>
+                        <select id="edit-preferences-duration" name="duration" autocomplete="off">
+                            <option value="30min">30 minutes</option>
+                            <option value="1hour">1 hour</option>
+                            <option value="2hours">2 hours</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label id="edit-available-times-label">Available Time Slots</label>
+                        <div class="checkbox-group" aria-labelledby="edit-available-times-label">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="edit-available-times-1" name="available-times" value="09:00-12:00"> 09:00-12:00 (Morning)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="edit-available-times-2" name="available-times" value="12:00-14:00"> 12:00-14:00 (Lunch)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="edit-available-times-3" name="available-times" value="14:00-17:00"> 14:00-17:00 (Afternoon)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="edit-available-times-4" name="available-times" value="17:00-19:00"> 17:00-19:00 (Evening)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="edit-available-times-5" name="available-times" value="19:00-21:00"> 19:00-21:00 (Night)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline" id="cancel-preferences-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Preferences</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        // Immediate authentication check - redirect if not logged in
+        function checkAuthenticationAndRedirect() {
+            // Check for authentication token
+            const token = localStorage.getItem('access_token') || localStorage.getItem('authToken');
+            
+            if (!token) {
+                // No token found, redirect to login
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            // Check for user data
+            const userData = localStorage.getItem('userData') || 
+                            localStorage.getItem('current_user') || 
+                            localStorage.getItem('campusSkillSwapUser');
+            
+            if (!userData) {
+                // No user data found, redirect to login
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            try {
+                const user = JSON.parse(userData);
+                // Check if user data is valid (not test user)
+                if (!user || !user.email || user.email === 'test@example.com') {
+                    window.location.href = 'login.html';
+                    return false;
+                }
+            } catch (e) {
+                // Invalid user data, redirect to login
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Run authentication check immediately
+        if (!checkAuthenticationAndRedirect()) {
+            // Stop execution if redirecting
+            throw new Error('Authentication required');
+        }
+        
+        // Set token in API client
+        const token = localStorage.getItem('access_token') || localStorage.getItem('authToken');
+        console.log('Token found in localStorage:', token ? 'Yes' : 'No');
+        if (window.apiClient && token) {
+            console.log('Setting token in API client');
+            window.apiClient.setToken(token);
+        } else {
+            console.log('API client or token not available');
+        }
+
+        // Profile page functionality
+        console.log('DOM Content Loaded');
+        console.log('API Client available:', !!window.apiClient);
+        if (window.apiClient) {
+            console.log('API Client token:', window.apiClient.token ? 'Present' : 'Missing');
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Global variables for profile data
+            let currentUser = null;
+            let userStats = null;
+            let userSkills = [];
+            let userReviews = [];
+
+            // Load user profile from API
+            async function loadUserProfile() {
+                try {
+                    if (window.apiClient && window.apiClient.isAuthenticated()) {
+                        console.log('Loading user profile from API...');
+                        const response = await window.apiClient.get('/auth/me');
+                        
+                        if (response.success && response.user) {
+                            currentUser = response.user;
+                            console.log('User profile loaded:', currentUser);
+                            console.log('Profile image from API:', currentUser.profileImage);
+                            localStorage.setItem('userData', JSON.stringify(currentUser));
+                            return currentUser;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Failed to load user profile:', error);
+                    showToast('Failed to load profile data. Please refresh the page.', 'error');
+                }
+                return null;
+            }
+
+            // Load user stats from API
+            async function loadUserStats() {
+                try {
+                    if (window.apiClient && window.apiClient.isAuthenticated()) {
+                        console.log('Loading user stats from API...');
+                        const response = await window.apiClient.get('/users/me/stats');
+                        
+                        if (response.success && response.data) {
+                            userStats = response.data;
+                            console.log('User stats loaded:', userStats);
+                            return userStats;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Failed to load user stats:', error);
+                }
+                return null;
+            }
+
+            // Load user skills from API
+            async function loadUserSkills() {
+                try {
+                    if (window.apiClient && window.apiClient.isAuthenticated()) {
+                        console.log('Loading user skills from API...');
+                        const response = await window.apiClient.get('/skills/my-skills');
+                        
+                        if (response.success && response.data) {
+                            userSkills = response.data;
+                            console.log('User skills loaded:', userSkills);
+                            return userSkills;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Failed to load user skills:', error);
+                }
+                return [];
+            }
+
+            // Load user reviews from API
+            async function loadUserReviews() {
+                try {
+                    if (window.apiClient && window.apiClient.isAuthenticated() && currentUser) {
+                        console.log('Loading user reviews from API...');
+                        // Use the correct endpoint with reviewee parameter
+                        const response = await window.apiClient.get(`/reviews?reviewee=${currentUser._id || currentUser.id}&type=teacher&limit=50`);
+
+                        if (response.success && response.data) {
+                            userReviews = response.data;
+                            console.log('User reviews loaded:', userReviews);
+                            return userReviews;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Failed to load user reviews:', error);
+                    // Show error in reviews section
+                    const reviewsContainer = document.getElementById('profile-recent-reviews');
+                    if (reviewsContainer) {
+                        reviewsContainer.innerHTML = `
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <span class="reviewer-name">Error loading reviews</span>
+                                    <div class="review-rating">
+                                        ${Array(5).fill(0).map(() => '<i class="far fa-star"></i>').join('')}
+                                    </div>
+                                </div>
+                                <p class="review-comment">Unable to load reviews at this time. Please try refreshing the page.</p>
+                                <span class="review-date">-</span>
+                            </div>
+                        `;
+                    }
+                }
+                return [];
+            }
+
+            // Load user data and display it
+            function loadUserData() {
+                if (!currentUser) {
+                    console.error('No user data available');
+                    return;
+                }
+
+                // Update profile header
+                document.getElementById('profile-name').textContent = currentUser.name || 'User';
+                document.getElementById('profile-major').textContent = `${currentUser.major || 'Not specified'}, ${currentUser.year || 'Not specified'}`;
+                
+                // Load profile image if exists
+                const profileAvatarIcon = document.getElementById('profile-avatar-icon');
+                const profileAvatar = profileAvatarIcon.parentNode;
+                
+                // Remove any existing profile image
+                const existingImg = document.getElementById('profile-avatar-img');
+                if (existingImg) {
+                    existingImg.remove();
+                }
+                
+                if (currentUser.profileImage) {
+                    console.log('Loading profile image:', currentUser.profileImage);
+                    profileAvatarIcon.style.display = 'none';
+                    
+                    // Create new image element
+                    const profileImg = document.createElement('img');
+                    profileImg.id = 'profile-avatar-img';
+                    profileImg.style.width = '100%';
+                    profileImg.style.height = '100%';
+                    profileImg.style.borderRadius = '50%';
+                    profileImg.style.objectFit = 'cover';
+                    profileImg.style.position = 'absolute';
+                    profileImg.style.top = '0';
+                    profileImg.style.left = '0';
+                    
+                    // Check if profileImage is already a full URL or just a path
+                    let imageUrl;
+                    if (currentUser.profileImage.startsWith('http://') || currentUser.profileImage.startsWith('https://')) {
+                        // Already a full URL, use as-is
+                        imageUrl = currentUser.profileImage;
+                    } else {
+                        // Just a path, construct the full URL
+                        let imagePath = currentUser.profileImage;
+                        // Remove any leading slashes
+                        if (imagePath.startsWith('/')) {
+                            imagePath = imagePath.substring(1);
+                        }
+                        imageUrl = `http://localhost:5001/${imagePath}`;
+                    }
+                    
+                    console.log('Image URL:', imageUrl);
+                    profileImg.src = imageUrl;
+                    
+                    // Add error handler
+                    profileImg.onerror = function() {
+                        console.error('Failed to load profile image');
+                        console.error('Attempted URL:', this.src);
+                        console.error('Profile image path from user data:', currentUser.profileImage);
+                        profileAvatarIcon.style.display = 'block';
+                        this.remove();
+                    };
+                    
+                    // Insert before the overlay so overlay appears on top
+                    const overlay = profileAvatar.querySelector('.avatar-overlay');
+                    profileAvatar.insertBefore(profileImg, overlay);
+                } else {
+                    // Show default icon if no profile image
+                    profileAvatarIcon.style.display = 'block';
+                }
+                // Update stats from userStats if available
+                if (userStats && userStats.basic) {
+                    document.getElementById('profile-credits').textContent = userStats.basic.timeCredits || 0;
+                    document.getElementById('profile-rating-text').textContent = `(${userStats.basic.rating?.average || 0})`;
+                    updateStars('profile-stars', userStats.basic.rating?.average || 0);
+                } else {
+                    document.getElementById('profile-credits').textContent = currentUser.timeCredits || 0;
+                    document.getElementById('profile-rating-text').textContent = `(${currentUser.rating?.average || 0})`;
+                    updateStars('profile-stars', currentUser.rating?.average || 0);
+                }
+
+                // Update detailed stats if available
+                if (userStats && userStats.detailed) {
+                    document.getElementById('profile-sessions').textContent = userStats.detailed.totalSessionsAsTeacher || 0;
+                    document.getElementById('profile-students').textContent = userStats.detailed.totalSkills || 0;
+                } else {
+                    document.getElementById('profile-sessions').textContent = '0';
+                    document.getElementById('profile-students').textContent = '0';
+                }
+
+                // Update info grid
+                document.getElementById('info-name').textContent = currentUser.name || 'Not specified';
+                document.getElementById('info-email').textContent = currentUser.email || 'Not specified';
+                document.getElementById('info-major').textContent = currentUser.major || 'Not specified';
+                document.getElementById('info-year').textContent = currentUser.year || 'Not specified';
+                document.getElementById('info-university').textContent = currentUser.university || 'Not specified';
+                document.getElementById('info-member-since').textContent = currentUser.memberSince ? new Date(currentUser.memberSince).toLocaleDateString() : 'Not specified';
+
+                // Update bio
+                document.getElementById('profile-bio').textContent = currentUser.bio || 'No bio available. Click edit to add your bio.';
+
+                // Update interests
+                const interestsContainer = document.getElementById('profile-interests');
+                interestsContainer.innerHTML = '';
+                
+                const interests = Array.isArray(currentUser.interests) ? currentUser.interests : [];
+                if (interests.length === 0) {
+                    const noInterests = document.createElement('span');
+                    noInterests.className = 'interest-tag';
+                    noInterests.textContent = 'No interests added yet';
+                    interestsContainer.appendChild(noInterests);
+                } else {
+                    interests.forEach(interest => {
+                        const tag = document.createElement('span');
+                        tag.className = 'interest-tag';
+                        tag.textContent = interest;
+                        interestsContainer.appendChild(tag);
+                    });
+                }
+
+                // Update skills
+                updateSkillsList(userSkills);
+
+                // Update reviews
+                updateReviewsList(userReviews);
+
+                // Update achievements (we'll create basic ones based on real data)
+                updateAchievementsList();
+
+                // Update teaching preferences
+                updateTeachingPreferences(currentUser.teachingPreferences || {});
+            }
+
+            // Update teaching preferences
+            function updateTeachingPreferences(preferences) {
+                if (!preferences) return;
+                
+                document.getElementById('pref-location').textContent = preferences.location || 'Not set';
+                document.getElementById('pref-days').textContent = preferences.days ? preferences.days.join(', ') : 'Not set';
+                document.getElementById('pref-time').textContent = preferences.time || 'Not set';
+                document.getElementById('pref-duration').textContent = preferences.duration || 'Not set';
+                
+                // Update available times if element exists
+                const availableTimesElement = document.getElementById('pref-available-times');
+                if (availableTimesElement && preferences.availableTimes) {
+                    availableTimesElement.textContent = preferences.availableTimes.join(', ');
+                }
+            }
+
+            function updateStars(containerId, rating) {
+                const container = document.getElementById(containerId);
+                container.innerHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    const star = document.createElement('i');
+                    star.className = i <= rating ? 'fas fa-star' : 'far fa-star';
+                    container.appendChild(star);
+                }
+            }
+
+            function updateSkillsList(skills) {
+                const container = document.getElementById('profile-skills-list');
+                container.innerHTML = '';
+                
+                // Ensure skills is an array
+                if (!Array.isArray(skills) || skills.length === 0) {
+                    const noSkills = document.createElement('div');
+                    noSkills.className = 'skill-item';
+                    noSkills.innerHTML = `
+                        <div class="skill-header">
+                            <h3>No skills added yet</h3>
+                            <span class="skill-credits">0 Credits/hour</span>
+                        </div>
+                        <div class="skill-rating">
+                            <div class="stars">
+                                ${Array(5).fill(0).map(() => '<i class="far fa-star"></i>').join('')}
+                            </div>
+                            <span>(0.0)</span>
+                        </div>
+                    `;
+                    container.appendChild(noSkills);
+                    return;
+                }
+                
+                skills.forEach(skill => {
+                    const skillItem = document.createElement('div');
+                    skillItem.className = 'skill-item';
+                    const rating = skill.rating?.average || 0;
+                    skillItem.innerHTML = `
+                        <div class="skill-header">
+                            <h3>${skill.title || skill.name || 'Untitled Skill'}</h3>
+                            <span class="skill-credits">${skill.creditsPerHour || 0} Credits/hour</span>
+                        </div>
+                        <div class="skill-rating">
+                            <div class="stars">
+                                ${Array(5).fill(0).map((_, i) => 
+                                    `<i class="${i < rating ? 'fas' : 'far'} fa-star"></i>`
+                                ).join('')}
+                            </div>
+                            <span>(${rating.toFixed(1)})</span>
+                        </div>
+                    `;
+                    container.appendChild(skillItem);
+                });
+            }
+
+            function updateReviewsList(reviews) {
+                const container = document.getElementById('profile-recent-reviews');
+                container.innerHTML = '';
+                
+                // Update rating breakdown bars based on actual review data
+                const ratingBreakdown = document.querySelector('.rating-breakdown');
+                if (ratingBreakdown && Array.isArray(reviews) && reviews.length > 0) {
+                    // Calculate averages for each detailed rating category
+                    const categories = ['teachingQuality', 'communication', 'punctuality'];
+                    const categoryLabels = ['Teaching Quality', 'Communication', 'Punctuality'];
+                    const categoryAverages = {};
+                    
+                    categories.forEach(category => {
+                        const ratingsForCategory = reviews
+                            .filter(r => r.detailedRatings && r.detailedRatings[category])
+                            .map(r => r.detailedRatings[category]);
+                        
+                        if (ratingsForCategory.length > 0) {
+                            categoryAverages[category] = ratingsForCategory.reduce((sum, r) => sum + r, 0) / ratingsForCategory.length;
+                        } else {
+                            categoryAverages[category] = 0;
+                        }
+                    });
+                    
+                    // Update the rating breakdown HTML
+                    ratingBreakdown.innerHTML = categories.map((category, index) => {
+                        const avg = categoryAverages[category];
+                        const percentage = (avg / 5) * 100;
+                        return `
+                            <div class="rating-item">
+                                <span class="rating-label">${categoryLabels[index]}</span>
+                                <div class="rating-bar">
+                                    <div class="rating-fill" style="width: ${percentage}%"></div>
+                                </div>
+                                <span class="rating-value">${avg.toFixed(1)}</span>
+                            </div>
+                        `;
+                    }).join('');
+                }
+                
+                // Ensure reviews is an array
+                if (!Array.isArray(reviews) || reviews.length === 0) {
+                    const noReviews = document.createElement('div');
+                    noReviews.className = 'review-item';
+                    noReviews.innerHTML = `
+                        <div class="review-header">
+                            <span class="reviewer-name">No reviews yet</span>
+                            <div class="review-rating">
+                                ${Array(5).fill(0).map(() => '<i class="far fa-star"></i>').join('')}
+                            </div>
+                        </div>
+                        <p class="review-comment">You haven't received any reviews yet. Complete some sessions to get feedback!</p>
+                        <span class="review-date">-</span>
+                    `;
+                    container.appendChild(noReviews);
+                    return;
+                }
+                
+                reviews.forEach(review => {
+                    const reviewItem = document.createElement('div');
+                    reviewItem.className = 'review-item';
+                    const reviewDate = review.createdAt ? new Date(review.createdAt).toLocaleDateString() : 'Unknown date';
+                    reviewItem.innerHTML = `
+                        <div class="review-header">
+                            <span class="reviewer-name">${review.reviewer?.name || 'Anonymous'}</span>
+                            <div class="review-rating">
+                                ${Array(5).fill(0).map((_, i) => 
+                                    `<i class="${i < (review.rating || 0) ? 'fas' : 'far'} fa-star"></i>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        <p class="review-comment">${review.comment || 'No comment provided'}</p>
+                        <span class="review-date">${reviewDate}</span>
+                    `;
+                    container.appendChild(reviewItem);
+                });
+            }
+
+            function updateAchievementsList() {
+                const container = document.getElementById('profile-achievements');
+                container.innerHTML = '';
+                
+                // Create achievements based on real data
+                const achievements = [];
+                
+                // Check if user has skills
+                if (userSkills && userSkills.length > 0) {
+                    achievements.push({
+                        name: "Skill Teacher",
+                        description: `Teaching ${userSkills.length} skill${userSkills.length > 1 ? 's' : ''}`,
+                        icon: "fas fa-graduation-cap",
+                        earned: true
+                    });
+                }
+                
+                // Check if user has completed sessions
+                if (userStats && userStats.detailed && userStats.detailed.totalSessionsAsTeacher > 0) {
+                    achievements.push({
+                        name: "Active Teacher",
+                        description: `Completed ${userStats.detailed.totalSessionsAsTeacher} teaching session${userStats.detailed.totalSessionsAsTeacher > 1 ? 's' : ''}`,
+                        icon: "fas fa-chalkboard-teacher",
+                        earned: true
+                    });
+                }
+                
+                // Check if user has good rating
+                if (userStats && userStats.basic && userStats.basic.rating && userStats.basic.rating.average >= 4.0) {
+                    achievements.push({
+                        name: "Top Rated",
+                        description: `Rated ${userStats.basic.rating.average.toFixed(1)} stars by students`,
+                        icon: "fas fa-star",
+                        earned: true
+                    });
+                }
+                
+                // Check if user has reviews
+                if (userReviews && userReviews.length > 0) {
+                    achievements.push({
+                        name: "Community Favorite",
+                        description: `Received ${userReviews.length} review${userReviews.length > 1 ? 's' : ''}`,
+                        icon: "fas fa-heart",
+                        earned: true
+                    });
+                }
+                
+                // Add some goals/achievements to work towards
+                if (!achievements.find(a => a.name === "Skill Teacher")) {
+                    achievements.push({
+                        name: "First Skill",
+                        description: "Add your first skill to teach",
+                        icon: "fas fa-plus-circle",
+                        earned: false
+                    });
+                }
+                
+                if (!achievements.find(a => a.name === "Active Teacher")) {
+                    achievements.push({
+                        name: "First Session",
+                        description: "Complete your first teaching session",
+                        icon: "fas fa-play-circle",
+                        earned: false
+                    });
+                }
+                
+                if (!achievements.find(a => a.name === "Top Rated")) {
+                    achievements.push({
+                        name: "Excellent Rating",
+                        description: "Achieve a 4.0+ star rating",
+                        icon: "fas fa-trophy",
+                        earned: false
+                    });
+                }
+                
+                achievements.forEach(achievement => {
+                    const achievementItem = document.createElement('div');
+                    achievementItem.className = `achievement-item ${achievement.earned ? 'earned' : 'locked'}`;
+                    achievementItem.innerHTML = `
+                        <div class="achievement-icon">
+                            <i class="${achievement.icon}"></i>
+                        </div>
+                        <div class="achievement-info">
+                            <h3>${achievement.name}</h3>
+                            <p>${achievement.description}</p>
+                        </div>
+                    `;
+                    container.appendChild(achievementItem);
+                });
+            }
+
+            // Modal functionality
+            const editProfileBtn = document.getElementById('edit-profile-btn');
+            const editProfileModal = document.getElementById('edit-profile-modal');
+            const changeAvatarBtn = document.getElementById('change-avatar-btn');
+            const changeAvatarModal = document.getElementById('change-avatar-modal');
+            const editPreferencesBtn = document.getElementById('edit-preferences-btn');
+            const editPreferencesModal = document.getElementById('edit-preferences-modal');
+
+            editProfileBtn.addEventListener('click', function() {
+                console.log('Edit profile button clicked');
+                if (!currentUser) {
+                    showToast('No user data available', 'error');
+                    return;
+                }
+                console.log('Current user data:', currentUser);
+                
+                // Populate form with current data
+                console.log('Populating form with current user data');
+                const nameElement = document.getElementById('edit-name');
+                const majorElement = document.getElementById('edit-major');
+                console.log('Name element:', nameElement);
+                console.log('Major element:', majorElement);
+                if (nameElement) nameElement.value = currentUser.name || '';
+                if (majorElement) majorElement.value = currentUser.major || '';
+                
+                // Map year value for the select field
+                const yearElement = document.getElementById('edit-year');
+                console.log('Year element:', yearElement);
+                if (yearElement) {
+                    const yearMapping = {
+                        '1st Year': '1st Year',
+                        '2nd Year': '2nd Year',
+                        '3rd Year': '3rd Year',
+                        '4th Year': '4th Year',
+                        '5th Year': '5th Year',
+                        'Postgraduate': 'Postgraduate'
+                    };
+                    yearElement.value = yearMapping[currentUser.year] || currentUser.year || '1st Year';
+                }
+                
+                const bioElement = document.getElementById('edit-bio');
+                const interestsElement = document.getElementById('edit-interests');
+                console.log('Bio element:', bioElement);
+                console.log('Interests element:', interestsElement);
+                if (bioElement) bioElement.value = currentUser.bio || '';
+                if (interestsElement) interestsElement.value = Array.isArray(currentUser.interests) ? currentUser.interests.join(', ') : '';
+                
+                // Set location and duration if they exist in teaching preferences
+                const locationElement = document.getElementById('edit-profile-location');
+                const durationElement = document.getElementById('edit-profile-duration');
+                console.log('Location element:', locationElement);
+                console.log('Duration element:', durationElement);
+                if (currentUser.teachingPreferences) {
+                    if (currentUser.teachingPreferences.location && locationElement) {
+                        locationElement.value = currentUser.teachingPreferences.location;
+                    }
+                    if (currentUser.teachingPreferences.duration && durationElement) {
+                        durationElement.value = currentUser.teachingPreferences.duration;
+                    }
+                }
+                
+                editProfileModal.style.display = 'block';
+            });
+
+            changeAvatarBtn.addEventListener('click', function() {
+                changeAvatarModal.style.display = 'block';
+            });
+
+            editPreferencesBtn.addEventListener('click', function() {
+                if (!currentUser) {
+                    showToast('No user data available', 'error');
+                    return;
+                }
+                
+                // Populate form with current preferences
+                if (currentUser.teachingPreferences) {
+                    document.getElementById('edit-preferences-location').value = currentUser.teachingPreferences.location || 'campus-library';
+                    document.getElementById('edit-time').value = currentUser.teachingPreferences.time || 'evening';
+                    document.getElementById('edit-preferences-duration').value = currentUser.teachingPreferences.duration || '1hour';
+                    
+                    // Set days checkboxes
+                    const userDays = Array.isArray(currentUser.teachingPreferences.days) ? currentUser.teachingPreferences.days : [];
+                    document.querySelectorAll('input[name="days"]').forEach(checkbox => {
+                        checkbox.checked = userDays.includes(checkbox.value);
+                    });
+                    
+                    // Set available times checkboxes
+                    const userTimes = Array.isArray(currentUser.teachingPreferences.availableTimes) ? currentUser.teachingPreferences.availableTimes : [];
+                    document.querySelectorAll('input[name="available-times"]').forEach(checkbox => {
+                        checkbox.checked = userTimes.includes(checkbox.value);
+                    });
+                }
+                
+                editPreferencesModal.style.display = 'block';
+            });
+
+            // Close modals
+            document.querySelectorAll('.close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+            
+            // Cancel edit profile button
+            const cancelEditBtn = document.getElementById('cancel-edit-btn');
+            if (cancelEditBtn) {
+                cancelEditBtn.addEventListener('click', function() {
+                    editProfileModal.style.display = 'none';
+                });
+            }
+            
+            // Cancel edit preferences button
+            const cancelPreferencesBtn = document.getElementById('cancel-preferences-btn');
+            if (cancelPreferencesBtn) {
+                cancelPreferencesBtn.addEventListener('click', function() {
+                    editPreferencesModal.style.display = 'none';
+                });
+            }
+
+            // Form submission
+            console.log('Looking for edit profile form...');
+            const editProfileForm = document.getElementById('edit-profile-form');
+            if (editProfileForm) {
+                console.log('Edit profile form found, attaching submit listener');
+                editProfileForm.addEventListener('submit', async function(e) {
+                    console.log('Edit profile form submit event triggered');
+                    console.log('Event object:', e);
+                    console.log('Form elements at submit time:');
+                    console.log('Name:', document.getElementById('edit-name')?.value);
+                    console.log('Major:', document.getElementById('edit-major')?.value);
+                    console.log('Year:', document.getElementById('edit-year')?.value);
+                    e.preventDefault();
+                    
+                    // Debug: Check if API client is available and authenticated
+                    console.log('API Client available:', !!window.apiClient);
+                    console.log('API Client authenticated:', window.apiClient ? window.apiClient.isAuthenticated() : false);
+                    if (window.apiClient) {
+                        console.log('API Client token:', window.apiClient.token ? 'Present' : 'Missing');
+                    }
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Saving...';
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        // Prepare data for API
+                        console.log('Getting form values...');
+                        const nameElement = document.getElementById('edit-name');
+                        const majorElement = document.getElementById('edit-major');
+                        const yearElement = document.getElementById('edit-year');
+                        const bioElement = document.getElementById('edit-bio');
+                        const interestsElement = document.getElementById('edit-interests');
+                        const locationElement = document.getElementById('edit-profile-location');
+                        const durationElement = document.getElementById('edit-profile-duration');
+                        
+                        console.log('Form elements:', { nameElement, majorElement, yearElement, bioElement, interestsElement, locationElement, durationElement });
+                        
+                        if (!nameElement || !majorElement || !yearElement) {
+                            throw new Error('Required form elements not found');
+                        }
+                        
+                        const interestsValue = interestsElement ? interestsElement.value : '';
+                        let interestsArray = [];
+                        
+                        // Process interests - handle both comma-separated and array formats
+                        if (interestsValue) {
+                            if (Array.isArray(interestsValue)) {
+                                interestsArray = interestsValue.filter(item => item && item.trim());
+                            } else {
+                                interestsArray = interestsValue.split(',').map(item => item.trim()).filter(item => item);
+                            }
+                        }
+                        
+                        // Get year value directly (select options already match expected format)
+                        const mappedYear = document.getElementById('edit-year').value;
+                        
+                        // Get location and duration values
+                        const locationValue = document.getElementById('edit-profile-location').value;
+                        const durationValue = document.getElementById('edit-profile-duration').value;
+                        
+                        const profileData = {
+                            name: document.getElementById('edit-name').value,
+                            major: document.getElementById('edit-major').value,
+                            year: mappedYear,
+                            bio: document.getElementById('edit-bio').value,
+                            interests: interestsArray,
+                            teachingPreferences: {
+                                location: locationValue,
+                                duration: durationValue
+                            }
+                        };
+                        
+                        console.log('Sending profile data:', profileData);
+                        
+                        // Update via API
+                        console.log('Sending PUT request to /users/me with data:', profileData);
+                        
+                        // Check if API client is properly configured
+                        if (!window.apiClient) {
+                            throw new Error('API client not available');
+                        }
+                        
+                        if (!window.apiClient.token) {
+                            throw new Error('No authentication token available');
+                        }
+                        
+                        console.log('API client baseURL:', window.apiClient.baseURL);
+                        console.log('API client token present:', !!window.apiClient.token);
+                        
+                        try {
+                            const response = await window.apiClient.put('/users/me', profileData);
+                            console.log('Received response from API:', response);
+                            return response;
+                        } catch (apiError) {
+                            console.error('API request failed:', apiError);
+                            throw new Error(`Failed to update profile: ${apiError.message}`);
+                        }
+                        
+                        console.log('API response:', response);
+                        
+                        if (response.success) {
+                            // Update local data
+                            currentUser = { ...currentUser, ...response.data };
+                            localStorage.setItem('userData', JSON.stringify(currentUser));
+                            localStorage.setItem('current_user', JSON.stringify(currentUser)); // For compatibility
+                            
+                            // Reload the profile data
+                            loadUserData();
+                            
+                            // Close modal
+                            editProfileModal.style.display = 'none';
+                            
+                            // Show success message
+                            showToast('Profile updated successfully!', 'success');
+                        } else {
+                            throw new Error(response.message || 'Failed to update profile');
+                        }
+                    } catch (error) {
+                        console.error('Error updating profile:', error);
+                        showToast('Failed to update profile. Please try again.', 'error');
+                    } finally {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
+                });
+            } else {
+                console.error('Edit profile form not found');
+                // Debug: Check what forms are available
+                const allForms = document.querySelectorAll('form');
+                console.log('All forms in document:', allForms.length);
+                allForms.forEach((form, index) => {
+                    console.log(`Form ${index}:`, form.id, form);
+                });
+            }
+
+            // Preferences form submission
+            console.log('Looking for edit preferences form...');
+            const editPreferencesForm = document.getElementById('edit-preferences-form');
+            if (editPreferencesForm) {
+                console.log('Edit preferences form found, attaching submit listener');
+                editPreferencesForm.addEventListener('submit', async function(e) {
+                    console.log('Edit preferences form submit event triggered');
+                    e.preventDefault();
+                    
+                    // Debug: Check if API client is available and authenticated
+                    console.log('API Client available:', !!window.apiClient);
+                    console.log('API Client authenticated:', window.apiClient ? window.apiClient.isAuthenticated() : false);
+                    if (window.apiClient) {
+                        console.log('API Client token:', window.apiClient.token ? 'Present' : 'Missing');
+                    }
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Saving...';
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        // Get form data
+                        console.log('Getting preferences form values...');
+                        const locationElement = document.getElementById('edit-preferences-location');
+                        const timeElement = document.getElementById('edit-time');
+                        const durationElement = document.getElementById('edit-preferences-duration');
+                        
+                        console.log('Preferences form elements:', { locationElement, timeElement, durationElement });
+                        
+                        if (!locationElement || !timeElement || !durationElement) {
+                            throw new Error('Required preferences form elements not found');
+                        }
+                        
+                        const location = locationElement.value;
+                        const time = timeElement.value;
+                        const duration = durationElement.value;
+                        
+                        // Get selected days
+                        const selectedDays = Array.from(document.querySelectorAll('input[name="days"]:checked'))
+                            .map(checkbox => checkbox.value);
+                        
+                        // Get selected available times
+                        const selectedTimes = Array.from(document.querySelectorAll('input[name="available-times"]:checked'))
+                            .map(checkbox => checkbox.value);
+                        
+                        // Prepare teaching preferences data
+                        const teachingPreferences = {
+                            location: location,
+                            time: time,
+                            duration: duration,
+                            days: selectedDays,
+                            availableTimes: selectedTimes
+                        };
+                        
+                        console.log('Sending preferences data:', teachingPreferences);
+                        
+                        // Update via API
+                        console.log('Sending PUT request to /users/me with teaching preferences:', { teachingPreferences });
+                        const response = await window.apiClient.put('/users/me', { teachingPreferences });
+                        console.log('Received response from API:', response);
+                        
+                        console.log('API response:', response);
+                        
+                        // Check if response exists and has the expected structure
+                        if (!response) {
+                            throw new Error('No response received from server');
+                        }
+                        
+                        if (response.success) {
+                            // Update local data
+                            currentUser = { ...currentUser, ...response.data };
+                            localStorage.setItem('userData', JSON.stringify(currentUser));
+                            localStorage.setItem('current_user', JSON.stringify(currentUser)); // For compatibility
+                            
+                            // Reload the profile data
+                            loadUserData();
+                            
+                            // Close modal
+                            editPreferencesModal.style.display = 'none';
+                            
+                            // Show success message
+                            showToast('Teaching preferences updated successfully!', 'success');
+                        } else {
+                            throw new Error(response.message || 'Failed to update preferences');
+                        }
+                    } catch (error) {
+                        console.error('Error updating preferences:', error);
+                        showToast('Failed to update preferences. Please try again.', 'error');
+                    } finally {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
+                });
+            } else {
+                console.error('Edit preferences form not found');
+                // Debug: Check what forms are available
+                const allForms = document.querySelectorAll('form');
+                console.log('All forms in document:', allForms.length);
+                allForms.forEach((form, index) => {
+                    console.log(`Form ${index}:`, form.id, form);
+                });
+            }
+
+            // Avatar upload functionality
+            const uploadArea = document.getElementById('avatar-upload-area');
+            const fileInput = document.getElementById('avatar-file-input');
+            const imagePreview = document.getElementById('image-preview');
+            const previewImg = document.getElementById('preview-img');
+            const removeImageBtn = document.getElementById('remove-image-btn');
+            let selectedFile = null;
+
+            // Click to upload
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--primary-color)';
+                uploadArea.style.backgroundColor = 'var(--primary-color-light)';
+            });
+
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--border-color)';
+                uploadArea.style.backgroundColor = 'var(--card-bg)';
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--border-color)';
+                uploadArea.style.backgroundColor = 'var(--card-bg)';
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFileSelect(files[0]);
+                }
+            });
+
+            // File input change
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    handleFileSelect(e.target.files[0]);
+                }
+            });
+
+            function handleFileSelect(file) {
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    showToast('Please select an image file', 'error');
+                    return;
+                }
+
+                // Validate file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    showToast('File size must be less than 5MB', 'error');
+                    return;
+                }
+
+                selectedFile = file;
+                
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    uploadArea.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+
+                // Clear any selected predefined avatar
+                document.querySelectorAll('.avatar-option').forEach(opt => opt.classList.remove('selected'));
+            }
+
+            // Remove uploaded image
+            removeImageBtn.addEventListener('click', () => {
+                selectedFile = null;
+                imagePreview.style.display = 'none';
+                uploadArea.style.display = 'block';
+                fileInput.value = '';
+            });
+
+            // Avatar selection (predefined)
+            document.querySelectorAll('.avatar-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.avatar-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Hide uploaded image if any
+                    if (selectedFile) {
+                        selectedFile = null;
+                        imagePreview.style.display = 'none';
+                        uploadArea.style.display = 'block';
+                        fileInput.value = '';
+                    }
+                });
+            });
+
+            // Save avatar functionality
+            document.getElementById('save-avatar-btn').addEventListener('click', async function() {
+                const saveBtn = this;
+                const originalText = saveBtn.textContent;
+                saveBtn.disabled = true;
+                saveBtn.textContent = 'Saving...';
+
+                try {
+                    if (selectedFile) {
+                        // Handle file upload to server
+                        const formData = new FormData();
+                        formData.append('avatar', selectedFile);
+                        
+                        // Get token from localStorage - try both possible keys
+                        const token = localStorage.getItem('access_token') || localStorage.getItem('authToken');
+                        
+                        if (!token) {
+                            throw new Error('Not authenticated. Please log in again.');
+                        }
+                        
+                        // Upload to server using API
+                        const response = await fetch('http://localhost:5001/api/users/me/avatar', {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: formData
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            // Reload user profile from API to get updated data
+                            await loadUserProfile();
+                            
+                            // Update the display
+                            loadUserData();
+                            
+                            // Close modal and show success
+                            changeAvatarModal.style.display = 'none';
+                            showToast('Avatar uploaded successfully!', 'success');
+                        } else {
+                            throw new Error(result.message || 'Failed to upload avatar');
+                        }
+                        
+                    } else {
+                        // Handle predefined avatar selection
+                        const selectedAvatar = document.querySelector('.avatar-option.selected');
+                        if (selectedAvatar) {
+                            const avatarType = selectedAvatar.dataset.avatar;
+                            const avatarIcon = selectedAvatar.querySelector('i');
+                            
+                            // Update profile avatar display
+                            const profileAvatarIcon = document.getElementById('profile-avatar-icon');
+                            profileAvatarIcon.className = avatarIcon.className;
+                            profileAvatarIcon.style.display = 'block';
+                            
+                            // Remove any uploaded image
+                            const profileImg = document.getElementById('profile-avatar-img');
+                            if (profileImg) {
+                                profileImg.remove();
+                            }
+                            
+                            // Save to user profile
+                            if (currentUser) {
+                                currentUser.avatar = avatarType;
+                                currentUser.avatarType = 'predefined';
+                                localStorage.setItem('userData', JSON.stringify(currentUser));
+                                localStorage.setItem('current_user', JSON.stringify(currentUser)); // For compatibility
+                            }
+                            
+                            // Close modal and show success
+                            changeAvatarModal.style.display = 'none';
+                            showToast('Avatar updated successfully!', 'success');
+                            
+                        } else {
+                            showToast('Please select an avatar or upload an image', 'error');
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error saving avatar:', error);
+                    showToast(error.message || 'Failed to save avatar. Please try again.', 'error');
+                } finally {
+                    saveBtn.disabled = false;
+                    saveBtn.textContent = originalText;
+                }
+            });
+
+            // Cancel avatar change
+            document.getElementById('cancel-avatar-btn').addEventListener('click', function() {
+                // Reset selections
+                selectedFile = null;
+                fileInput.value = '';
+                imagePreview.style.display = 'none';
+                uploadArea.style.display = 'block';
+                document.querySelectorAll('.avatar-option').forEach(opt => opt.classList.remove('selected'));
+                
+                // Close modal
+                changeAvatarModal.style.display = 'none';
+            });
+
+            // Theme toggle functionality
+            const profileThemeToggle = document.getElementById('profile-theme-toggle-btn');
+            const profileThemeIcon = document.getElementById('profile-theme-icon');
+            const profileThemeText = document.getElementById('profile-theme-text');
+
+            function updateProfileThemeUI() {
+                const isDark = window.themeManager.isDarkTheme();
+                profileThemeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+                profileThemeText.textContent = isDark ? 'Dark' : 'Light';
+                profileThemeToggle.title = isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme';
+            }
+
+            profileThemeToggle.addEventListener('click', function() {
+                window.themeManager.toggleTheme();
+                updateProfileThemeUI();
+            });
+
+            // Listen for theme changes from the navigation toggle
+            window.addEventListener('themeChanged', function(e) {
+                updateProfileThemeUI();
+            });
+
+            // Initialize page
+            async function initializeProfile() {
+                try {
+                    console.log('Initializing profile page...');
+                    
+                    // Load all profile data from API
+                    await Promise.all([
+                        loadUserProfile(),
+                        loadUserStats(),
+                        loadUserSkills(),
+                        loadUserReviews()
+                    ]);
+                    
+                    // Display the loaded data
+                    loadUserData();
+                    
+                    // Update theme UI
+                    updateProfileThemeUI();
+                    
+                    // Update navigation after loading user data
+                    if (typeof updateNavigation === 'function') {
+                        updateNavigation();
+                    }
+                    
+                    console.log('Profile page initialized successfully');
+                } catch (error) {
+                    console.error('Failed to initialize profile page:', error);
+                    showToast('Failed to load profile data. Please refresh the page.', 'error');
+                }
+            }
+
+            // Initialize page
+            initializeProfile();
+        });
+    </script>
+</body>
+</html>
+
+

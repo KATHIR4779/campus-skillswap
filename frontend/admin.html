@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Campus SkillSwap</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-mark">⏳</span>
+                    <span class="logo-text">Campus SkillSwap</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-auth">
+                    <button class="btn btn-theme" id="theme-btn" title="Toggle theme">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                    <a href="index.html" class="btn btn-outline">Back to App</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <div class="container">
+            <div class="admin-header">
+                <h1><i class="fas fa-shield-alt"></i> Admin Panel</h1>
+                <p>System administration and management</p>
+                <div class="admin-actions-header">
+                    <button class="btn btn-primary" onclick="adminManager.loadStats()" title="Refresh Statistics">
+                        <i class="fas fa-sync-alt"></i> Refresh Stats
+                    </button>
+                    <button class="btn btn-outline" onclick="adminManager.logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Admin Login Section -->
+            <div id="admin-login-section" class="admin-section">
+                <div class="admin-card">
+                    <h2><i class="fas fa-lock"></i> Admin Authentication</h2>
+                    <form id="admin-login-form">
+                        <div class="form-group">
+                            <label for="admin-email">Email</label>
+                            <input type="email" id="admin-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-password">Password</label>
+                            <input type="password" id="admin-password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Login as Admin
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-users">-</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="active-users">-</h3>
+                            <p>Active Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-skills">-</h3>
+                            <p>Total Skills</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-sessions">-</h3>
+                            <p>Total Sessions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Tabs -->
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="users">
+                        <i class="fas fa-users"></i> User Management
+                    </button>
+                    <button class="tab-btn" data-tab="skills">
+                        <i class="fas fa-graduation-cap"></i> Skills Management
+                    </button>
+                    <button class="tab-btn" data-tab="sessions">
+                        <i class="fas fa-clock"></i> Sessions Management
+                    </button>
+                    <button class="tab-btn" data-tab="email-domains">
+                        <i class="fas fa-envelope"></i> Email Domains
+                    </button>
+                    <button class="tab-btn" data-tab="system-settings">
+                        <i class="fas fa-cog"></i> System Settings
+                    </button>
+                    <button class="tab-btn" data-tab="logs">
+                        <i class="fas fa-file-alt"></i> System Logs
+                    </button>
+                </div>
+
+                <!-- User Management Tab -->
+                <div id="users-tab" class="tab-content active">
+                    <div class="admin-card">
+                        <h2><i class="fas fa-users"></i> User Management</h2>
+                        <div class="user-filters">
+                            <input type="text" id="user-search" placeholder="Search users...">
+                            <select id="user-status-filter">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="pending_verification">Pending Verification</option>
+                            </select>
+                        </div>
+                        <div class="users-table-container">
+                            <table class="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>University</th>
+                                        <th>Status</th>
+                                        <th>Verified</th>
+                                        <th>Credits</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="users-table-body">
+                                    <!-- Users will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Management Tab -->
+                <div id="skills-tab" class="tab-content">
+                    <div class="admin-card">
+                        <h2><i class="fas fa-graduation-cap"></i> Skills Management</h2>
+                        <div class="user-filters">
+                            <input type="text" id="skill-search" placeholder="Search skills by title or category...">
+                            <select id="skill-status-filter">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="pending_verification">Pending Verification</option>
+                            </select>
+                        </div>
+                        <div class="users-table-container">
+                            <table class="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Category</th>
+                                        <th>Teacher</th>
+                                        <th>Credits</th>
+                                        <th>Status</th>
+                                        <th>Verified</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="skills-table-body">
+                                    <!-- Skills will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sessions Management Tab -->
+                <div id="sessions-tab" class="tab-content">
+                    <div class="admin-card">
+                        <h2><i class="fas fa-clock"></i> Sessions Management</h2>
+                        <div class="user-filters">
+                            <input type="text" id="session-search" placeholder="Search sessions by skill or user...">
+                            <select id="session-status-filter">
+                                <option value="">All Status</option>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="users-table-container">
+                            <table class="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>Skill</th>
+                                        <th>Teacher</th>
+                                        <th>Student</th>
+                                        <th>Date</th>
+                                        <th>Duration</th>
+                                        <th>Credits</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sessions-table-body">
+                                    <!-- Sessions will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Domains Tab -->
+                <div id="email-domains-tab" class="tab-content">
+                    <div class="admin-card">
+                        <h2><i class="fas fa-envelope"></i> Email Domain Management</h2>
+                        <div class="domain-info">
+                            <div class="info-card">
+                                <i class="fas fa-info-circle"></i>
+                                <div>
+                                    <h4>Domain Control</h4>
+                                    <p>Control which email domains are allowed for user registration. Only users with email addresses from allowed domains can register on the platform.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="domains-section">
+                            <div class="domains-header">
+                                <h3><i class="fas fa-list"></i> Current Allowed Domains</h3>
+                                <div class="domains-stats">
+                                    <span id="domain-count">0 domains configured</span>
+                                </div>
+                            </div>
+                            
+                            <div class="domains-table-container">
+                                <table class="domains-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Domain Name</th>
+                                            <th>Status</th>
+                                            <th>User Count</th>
+                                            <th>Added Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="domains-table-body">
+                                        <!-- Domains will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="add-domain-section">
+                            <h3><i class="fas fa-plus-circle"></i> Add New Domain</h3>
+                            <div class="add-domain-form">
+                                <div class="form-group">
+                                    <label for="new-domain">Domain Name</label>
+                                    <input type="text" id="new-domain" placeholder="Enter domain (e.g., example.edu)" required>
+                                    <small class="form-help">Enter the domain without @ symbol (e.g., example.edu, university.com)</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="domain-description">Description (Optional)</label>
+                                    <input type="text" id="domain-description" placeholder="Brief description of the domain">
+                                </div>
+                                <div class="form-actions">
+                                    <button id="add-domain-btn" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Add Domain
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="domain-actions">
+                            <button id="save-domains-btn" class="btn btn-success" disabled>
+                                <i class="fas fa-save"></i> Save All Changes
+                            </button>
+                            <button id="reset-domains-btn" class="btn btn-outline">
+                                <i class="fas fa-undo"></i> Reset Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Settings Tab -->
+                <div id="system-settings-tab" class="tab-content">
+                    <div class="admin-card">
+                        <h2><i class="fas fa-cog"></i> System Settings</h2>
+                        <form id="system-settings-form">
+                            <div class="settings-grid">
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" id="email-verification-required" checked>
+                                        Email Verification Required
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="max-file-size">Max File Size (bytes)</label>
+                                    <input type="number" id="max-file-size" value="10485760">
+                                </div>
+                                <div class="form-group">
+                                    <label for="rate-limit">Rate Limit (requests per minute)</label>
+                                    <input type="number" id="rate-limit" value="60">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bcrypt-rounds">BCrypt Rounds</label>
+                                    <input type="number" id="bcrypt-rounds" value="12">
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" id="debug-mode">
+                                        Debug Mode
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Save Settings
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- System Logs Tab -->
+                <div id="logs-tab" class="tab-content">
+                    <div class="admin-card">
+                        <h2><i class="fas fa-file-alt"></i> System Logs</h2>
+                        <div class="logs-container">
+                            <div class="logs-header">
+                                <button id="refresh-logs-btn" class="btn btn-primary">
+                                    <i class="fas fa-refresh"></i> Refresh Logs
+                                </button>
+                            </div>
+                            <div class="logs-content" id="logs-content">
+                                <p>Log viewing functionality would be implemented here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast for notifications -->
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <!-- User Action Modal -->
+    <div id="user-action-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">User Actions</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    <!-- Modal content will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/admin.js"></script>
+    
+    <style>
+        .admin-actions-header {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-actions-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</body>
+</html>

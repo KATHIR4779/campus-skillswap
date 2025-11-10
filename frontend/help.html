@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Campus SkillSwap</title>
+    <meta name="description" content="Get help with Campus SkillSwap. Find answers to common questions, troubleshooting tips, and support resources.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Campus SkillSwap</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="messages.html" class="nav-link">Messages</a>
+                <a href="help.html" class="nav-link active">Help</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-auth" id="nav-auth">
+                    <button class="btn btn-theme" id="theme-btn" title="Toggle theme">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Help Hero -->
+    <section class="help-hero">
+        <div class="container">
+            <div class="help-hero-content">
+                <h1>Help Center</h1>
+                <p>Find answers to your questions and get the support you need</p>
+                
+                <!-- Search Help -->
+                <div class="help-search">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="help-search" placeholder="Search help articles...">
+                        <button class="btn btn-primary" id="search-help-btn">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Content -->
+    <section class="help-content">
+        <div class="container">
+            <div class="help-grid">
+                <!-- Left Sidebar -->
+                <div class="help-sidebar">
+                    <div class="help-categories">
+                        <h3>Help Categories</h3>
+                        <ul class="category-list">
+                            <li><a href="#getting-started" class="category-link active">Getting Started</a></li>
+                            <li><a href="#account" class="category-link">Account & Profile</a></li>
+                            <li><a href="#skills" class="category-link">Skills & Teaching</a></li>
+                            <li><a href="#sessions" class="category-link">Sessions & Learning</a></li>
+                            <li><a href="#credits" class="category-link">Time Credits</a></li>
+                            <li><a href="#messaging" class="category-link">Messaging</a></li>
+                            <li><a href="#troubleshooting" class="category-link">Troubleshooting</a></li>
+                            <li><a href="#safety" class="category-link">Safety & Guidelines</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="help-contact">
+                        <h3>Still Need Help?</h3>
+                        <p>Can't find what you're looking for?</p>
+                        <a href="contact.html" class="btn btn-outline">Contact Support</a>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="help-main">
+                    <!-- Getting Started -->
+                    <div id="getting-started" class="help-section">
+                        <h2>Getting Started</h2>
+                        
+                        <div class="faq-item">
+                            <h3>How do I register for Campus SkillSwap?</h3>
+                            <div class="faq-content">
+                                <p>To register:</p>
+                                <ol>
+                                    <li>Click the "Register" button on any page</li>
+                                    <li>Fill in your details including your university email</li>
+                                    <li>Verify your email address</li>
+                                    <li>Complete your profile setup</li>
+                                    <li>You'll receive 2 free Time Credits to start!</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>What universities are supported?</h3>
+                            <div class="faq-content">
+                                <p>Currently, we support students from:</p>
+                                <ul>
+                                    <li>Hindustan Institute of Technology and Science (HITS)</li>
+                                    <li>PSG College of Technology</li>
+                                    <li>Coimbatore Institute of Technology (CIT)</li>
+                                    <li>And other universities in Coimbatore</li>
+                                </ul>
+                                <p>Only university email addresses are accepted for registration.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>How does the Time Credit system work?</h3>
+                            <div class="faq-content">
+                                <p>Time Credits are our virtual currency:</p>
+                                <ul>
+                                    <li>You earn credits by teaching skills to other students</li>
+                                    <li>You spend credits to learn skills from other students</li>
+                                    <li>Each skill has a credit cost per hour (1-5 credits)</li>
+                                    <li>New users get 2 free credits to start</li>
+                                    <li>No real money is involved - it's all about time exchange</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account & Profile -->
+                    <div id="account" class="help-section" style="display: none;">
+                        <h2>Account & Profile</h2>
+                        
+                        <div class="faq-item">
+                            <h3>How do I update my profile information?</h3>
+                            <div class="faq-content">
+                                <p>To update your profile:</p>
+                                <ol>
+                                    <li>Go to your Dashboard</li>
+                                    <li>Click on "Profile Settings"</li>
+                                    <li>Update your information</li>
+                                    <li>Save changes</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>Can I change my university email?</h3>
+                            <div class="faq-content">
+                                <p>No, your university email cannot be changed as it's used for verification. If you need to update it, please contact support.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>How do I reset my password?</h3>
+                            <div class="faq-content">
+                                <p>To reset your password:</p>
+                                <ol>
+                                    <li>Go to the login page</li>
+                                    <li>Click "Forgot Password"</li>
+                                    <li>Enter your university email</li>
+                                    <li>Check your email for reset instructions</li>
+                                    <li>Follow the link to create a new password</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Teaching -->
+                    <div id="skills" class="help-section" style="display: none;">
+                        <h2>Skills & Teaching</h2>
+                        
+                        <div class="faq-item">
+                            <h3>How do I add a skill to teach?</h3>
+                            <div class="faq-content">
+                                <p>To add a new skill:</p>
+                                <ol>
+                                    <li>Go to your Dashboard</li>
+                                    <li>Click "Add New Skill"</li>
+                                    <li>Fill in the skill details</li>
+                                    <li>Set your availability and pricing</li>
+                                    <li>Submit for review</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>What types of skills can I teach?</h3>
+                            <div class="faq-content">
+                                <p>You can teach any skill you're knowledgeable about, including:</p>
+                                <ul>
+                                    <li>Academic subjects (Math, Science, Engineering)</li>
+                                    <li>Programming and Technology</li>
+                                    <li>Languages (Tamil, English, Hindi, etc.)</li>
+                                    <li>Arts and Creative skills</li>
+                                    <li>Life skills (Cooking, Fitness, etc.)</li>
+                                    <li>Sports and Physical activities</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>How do I set my skill pricing?</h3>
+                            <div class="faq-content">
+                                <p>Skill pricing is based on Time Credits per hour:</p>
+                                <ul>
+                                    <li>1 Credit: Basic skills, simple tutorials</li>
+                                    <li>2 Credits: Intermediate skills, structured lessons</li>
+                                    <li>3 Credits: Advanced skills, specialized knowledge</li>
+                                    <li>4-5 Credits: Expert-level skills, intensive training</li>
+                                </ul>
+                                <p>Consider your skill level and the value you provide when setting prices.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sessions & Learning -->
+                    <div id="sessions" class="help-section" style="display: none;">
+                        <h2>Sessions & Learning</h2>
+                        
+                        <div class="faq-item">
+                            <h3>How do I request a learning session?</h3>
+                            <div class="faq-content">
+                                <p>To request a session:</p>
+                                <ol>
+                                    <li>Browse the Marketplace</li>
+                                    <li>Find a skill you want to learn</li>
+                                    <li>Click "Request Session"</li>
+                                    <li>Choose your preferred time</li>
+                                    <li>Send your request to the teacher</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>Where do sessions take place?</h3>
+                            <div class="faq-content">
+                                <p>Sessions can take place:</p>
+                                <ul>
+                                    <li>On campus (libraries, study rooms, cafeterias)</li>
+                                    <li>Online via video call</li>
+                                    <li>At safe public locations near campus</li>
+                                    <li>At the teacher's or student's residence (with mutual agreement)</li>
+                                </ul>
+                                <p>Always prioritize safety and meet in public places when possible.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>What if I need to cancel a session?</h3>
+                            <div class="faq-content">
+                                <p>To cancel a session:</p>
+                                <ol>
+                                    <li>Go to your Dashboard</li>
+                                    <li>Find the session in "Upcoming Sessions"</li>
+                                    <li>Click "Cancel Session"</li>
+                                    <li>Provide a reason for cancellation</li>
+                                    <li>Notify the other party as soon as possible</li>
+                                </ol>
+                                <p>Cancellations within 24 hours may result in credit penalties.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Time Credits -->
+                    <div id="credits" class="help-section" style="display: none;">
+                        <h2>Time Credits</h2>
+                        
+                        <div class="faq-item">
+                            <h3>How do I earn Time Credits?</h3>
+                            <div class="faq-content">
+                                <p>You earn credits by:</p>
+                                <ul>
+                                    <li>Teaching skills to other students</li>
+                                    <li>Completing teaching sessions successfully</li>
+                                    <li>Receiving positive reviews from students</li>
+                                    <li>Participating in special events and challenges</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>How do I spend Time Credits?</h3>
+                            <div class="faq-content">
+                                <p>You spend credits by:</p>
+                                <ul>
+                                    <li>Requesting learning sessions</li>
+                                    <li>Booking sessions with teachers</li>
+                                    <li>Participating in premium workshops</li>
+                                </ul>
+                                <p>Credits are automatically deducted when you book a session.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>What if I run out of credits?</h3>
+                            <div class="faq-content">
+                                <p>If you run out of credits:</p>
+                                <ul>
+                                    <li>Start teaching skills to earn more credits</li>
+                                    <li>Complete your profile to get bonus credits</li>
+                                    <li>Participate in community events</li>
+                                    <li>Refer friends to the platform</li>
+                                </ul>
+                                <p>Remember: teaching is the primary way to earn credits!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messaging -->
+                    <div id="messaging" class="help-section" style="display: none;">
+                        <h2>Messaging</h2>
+                        
+                        <div class="faq-item">
+                            <h3>How do I message other students?</h3>
+                            <div class="faq-content">
+                                <p>To send messages:</p>
+                                <ol>
+                                    <li>Go to the Messages page</li>
+                                    <li>Click "New Message"</li>
+                                    <li>Search for the student you want to contact</li>
+                                    <li>Type your message and send</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>Can I send files or images in messages?</h3>
+                            <div class="faq-content">
+                                <p>Currently, you can:</p>
+                                <ul>
+                                    <li>Send text messages</li>
+                                    <li>Share links and resources</li>
+                                    <li>Use emojis and basic formatting</li>
+                                </ul>
+                                <p>File sharing features are coming soon!</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>How do I report inappropriate messages?</h3>
+                            <div class="faq-content">
+                                <p>To report inappropriate messages:</p>
+                                <ol>
+                                    <li>Open the message conversation</li>
+                                    <li>Click the "Report" button</li>
+                                    <li>Select the reason for reporting</li>
+                                    <li>Provide additional details if needed</li>
+                                    <li>Submit the report</li>
+                                </ol>
+                                <p>Our moderation team will review the report promptly.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Troubleshooting -->
+                    <div id="troubleshooting" class="help-section" style="display: none;">
+                        <h2>Troubleshooting</h2>
+                        
+                        <div class="faq-item">
+                            <h3>I can't log into my account</h3>
+                            <div class="faq-content">
+                                <p>Try these steps:</p>
+                                <ol>
+                                    <li>Check your email and password for typos</li>
+                                    <li>Make sure you're using your university email</li>
+                                    <li>Try resetting your password</li>
+                                    <li>Clear your browser cache and cookies</li>
+                                    <li>Try using a different browser</li>
+                                    <li>Contact support if the problem persists</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>The website is loading slowly</h3>
+                            <div class="faq-content">
+                                <p>To improve loading speed:</p>
+                                <ul>
+                                    <li>Check your internet connection</li>
+                                    <li>Close unnecessary browser tabs</li>
+                                    <li>Clear your browser cache</li>
+                                    <li>Try using a different browser</li>
+                                    <li>Disable browser extensions temporarily</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>I'm not receiving email notifications</h3>
+                            <div class="faq-content">
+                                <p>Check these settings:</p>
+                                <ol>
+                                    <li>Verify your email address in your profile</li>
+                                    <li>Check your spam/junk folder</li>
+                                    <li>Add noreply@campusskillswap.com to your contacts</li>
+                                    <li>Check your email notification preferences</li>
+                                    <li>Contact support if emails are still not arriving</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Safety & Guidelines -->
+                    <div id="safety" class="help-section" style="display: none;">
+                        <h2>Safety & Guidelines</h2>
+                        
+                        <div class="faq-item">
+                            <h3>What are the safety guidelines for meeting in person?</h3>
+                            <div class="faq-content">
+                                <p>For your safety:</p>
+                                <ul>
+                                    <li>Always meet in public places initially</li>
+                                    <li>Inform a friend or family member about your meeting</li>
+                                    <li>Trust your instincts - if something feels wrong, leave</li>
+                                    <li>Don't share personal information beyond what's necessary</li>
+                                    <li>Report any suspicious behavior immediately</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>What should I do if I feel unsafe?</h3>
+                            <div class="faq-content">
+                                <p>If you feel unsafe:</p>
+                                <ol>
+                                    <li>Remove yourself from the situation immediately</li>
+                                    <li>Report the incident through the platform</li>
+                                    <li>Contact campus security if on campus</li>
+                                    <li>Reach out to support for assistance</li>
+                                    <li>Consider involving local authorities if necessary</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>What content is not allowed on the platform?</h3>
+                            <div class="faq-content">
+                                <p>Prohibited content includes:</p>
+                                <ul>
+                                    <li>Inappropriate or offensive language</li>
+                                    <li>Harassment or bullying</li>
+                                    <li>Spam or promotional content</li>
+                                    <li>Academic dishonesty (cheating, plagiarism)</li>
+                                    <li>Any illegal activities</li>
+                                </ul>
+                                <p>Violations may result in account suspension or termination.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Campus SkillSwap</span>
+                    </div>
+                    <p>Empowering students to learn and teach through peer-to-peer skill exchange.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="marketplace.html">Browse Skills</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="admin.html" class="admin-link"><i class="fas fa-shield-alt"></i> Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="#safety">Safety Guidelines</a></li>
+                        <li><a href="#troubleshooting">Troubleshooting</a></li>
+                        <li><a href="contact.html">Report Issue</a></li>
+                        <li><a href="admin.html">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@campusskillswap.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Coimbatore, Tamil Nadu</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        // Help page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category navigation
+            const categoryLinks = document.querySelectorAll('.category-link');
+            const helpSections = document.querySelectorAll('.help-section');
+
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    categoryLinks.forEach(l => l.classList.remove('active'));
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Hide all sections
+                    helpSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show target section
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                    }
+                });
+            });
+
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('h3');
+                const content = item.querySelector('.faq-content');
+                
+                question.addEventListener('click', function() {
+                    // Toggle content visibility
+                    if (content.style.display === 'none' || content.style.display === '') {
+                        content.style.display = 'block';
+                        item.classList.add('active');
+                    } else {
+                        content.style.display = 'none';
+                        item.classList.remove('active');
+                    }
+                });
+            });
+
+            // Help search functionality
+            const helpSearch = document.getElementById('help-search');
+            const searchBtn = document.getElementById('search-help-btn');
+
+            function performSearch() {
+                const query = helpSearch.value.toLowerCase();
+                if (query.trim() === '') return;
+
+                // Simple search through FAQ content
+                faqItems.forEach(item => {
+                    const question = item.querySelector('h3').textContent.toLowerCase();
+                    const content = item.querySelector('.faq-content').textContent.toLowerCase();
+                    
+                    if (question.includes(query) || content.includes(query)) {
+                        item.style.display = 'block';
+                        item.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+
+            searchBtn.addEventListener('click', performSearch);
+            helpSearch.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Campus SkillSwap</title>
+    <meta name="description" content="Connect with other students through Campus SkillSwap messaging. Send messages, share resources, and coordinate sessions.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Campus SkillSwap</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="messages.html" class="nav-link active">Messages</a>
+                <a href="help.html" class="nav-link">Help</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-auth" id="nav-auth">
+                    <button class="btn btn-theme" id="theme-btn" title="Toggle theme">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages Header -->
+    <section class="messages-header">
+        <div class="container">
+            <div class="messages-hero">
+                <h1>Messages</h1>
+                <p>Connect with other students and coordinate your learning sessions</p>
+                
+                <!-- Message Actions -->
+                <div class="message-actions">
+                    <button class="btn btn-primary" id="new-message-btn">
+                        <i class="fas fa-plus"></i>
+                        New Message
+                    </button>
+                    <button class="btn btn-outline" id="mark-all-read-btn">
+                        <i class="fas fa-check-double"></i>
+                        Mark All Read
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Messages Content -->
+    <section class="messages-content">
+        <div class="container">
+            <div class="messages-container">
+                <!-- Left Sidebar - Conversations List -->
+                <div class="messages-sidebar">
+                    <div class="sidebar-header">
+                        <h2>Chats</h2>
+                        <div class="search-conversations">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="conversation-search" placeholder="Search chats...">
+                        </div>
+                    </div>
+                    
+                    <div class="conversations-list" id="conversations-list">
+                        <!-- Conversations will be populated -->
+                    </div>
+                </div>
+
+                <!-- Right Content - Message Thread -->
+                <div class="messages-main">
+                    <!-- No Conversation Selected -->
+                    <div id="no-conversation" class="no-conversation">
+                        <div class="no-conversation-content">
+                            <i class="fas fa-comments"></i>
+                            <h2>Select a chat</h2>
+                            <p>Choose a conversation from the list to start messaging</p>
+                        </div>
+                    </div>
+
+                    <!-- Active Conversation -->
+                    <div id="active-conversation" class="active-conversation" style="display: none;">
+                        <!-- Conversation Header -->
+                        <div class="conversation-header">
+                            <div class="conversation-info">
+                                <div class="conversation-avatar">
+                                    <i class="fas fa-user" id="conversation-avatar-icon"></i>
+                                </div>
+                                <div class="conversation-details">
+                                    <h3 id="conversation-name">Loading...</h3>
+                                    <p id="conversation-status">Online</p>
+                                </div>
+                            </div>
+                            <div class="conversation-actions">
+                                <button class="btn btn-outline btn-small" id="conversation-info-btn">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="btn btn-outline btn-small" id="conversation-settings-btn">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Messages Area -->
+                        <div class="messages-area" id="messages-area">
+                            <!-- Messages will be populated -->
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="message-input-area">
+                            <div class="message-input-container">
+                                <input type="file" id="file-input" style="display: none;" accept="image/*,application/pdf,.doc,.docx">
+                                <button class="btn btn-outline btn-small" id="attach-file-btn" title="Attach file">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <div class="message-input-wrapper">
+                                    <textarea id="message-input" placeholder="Type a message..." rows="1"></textarea>
+                                </div>
+                                <button class="btn btn-primary" id="send-message-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <div class="message-input-footer">
+                                <div id="file-preview" style="display: none;" class="file-preview">
+                                    <span id="file-name"></span>
+                                    <button class="btn-remove-file" id="remove-file-btn" title="Remove file">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <span class="typing-indicator" id="typing-indicator" style="display: none;">
+                                    <span class="typing-dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                    <span id="typing-user">Someone is typing...</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Campus SkillSwap</span>
+                    </div>
+                    <p>Empowering students to learn and teach through peer-to-peer skill exchange.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="marketplace.html">Browse Skills</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="admin.html" class="admin-link"><i class="fas fa-shield-alt"></i> Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="help.html#safety">Safety Guidelines</a></li>
+                        <li><a href="help.html#troubleshooting">Troubleshooting</a></li>
+                        <li><a href="contact.html">Report Issue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@campusskillswap.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Coimbatore, Tamil Nadu</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Campus SkillSwap. All rights reserved. | Designed for Coimbatore Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- New Message Modal -->
+    <div id="new-message-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Message</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="new-message-form">
+                    <div class="form-group">
+                        <label for="recipient-search">Send to</label>
+                        <div class="recipient-search">
+                            <input type="text" id="recipient-search" placeholder="Search students by name or email...">
+                            <div class="search-results" id="search-results">
+                                <!-- Search results will be populated -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-subject">Subject (optional)</label>
+                        <input type="text" id="message-subject" placeholder="e.g., Python Session Inquiry">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-content">Message</label>
+                        <textarea id="message-content" rows="4" placeholder="Type your message..." required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancel-message-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conversation Info Modal -->
+    <div id="conversation-info-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Conversation Info</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="conversation-info-content">
+                    <div class="info-section">
+                        <h3>Participant</h3>
+                        <div class="participant-info">
+                            <div class="participant-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="participant-details">
+                                <h4 id="participant-name">Loading...</h4>
+                                <p id="participant-major">Major, Year</p>
+                                <div class="participant-rating">
+                                    <div class="stars" id="participant-stars">
+                                        <!-- Stars will be populated -->
+                                    </div>
+                                    <span id="participant-rating-text">(0.0)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Shared Skills</h3>
+                        <div class="shared-skills" id="shared-skills">
+                            <!-- Shared skills will be populated -->
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Conversation Settings</h3>
+                        <div class="conversation-settings">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="mute-notifications">
+                                <span>Mute notifications</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="block-user">
+                                <span>Block user</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script>
+        // Immediate authentication check - redirect if not logged in
+        function checkAuthenticationAndRedirect() {
+            // Check for authentication token
+            const token = localStorage.getItem('access_token') || localStorage.getItem('authToken');
+            
+            if (!token) {
+                // No token found, redirect to login
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            // Check for user data
+            const userData = localStorage.getItem('userData') || 
+                            localStorage.getItem('current_user') || 
+                            localStorage.getItem('campusSkillSwapUser');
+            
+            if (!userData) {
+                // No user data found, redirect to login
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            try {
+                const user = JSON.parse(userData);
+                // Check if user data is valid (not test user)
+                if (!user || !user.email || user.email === 'test@example.com') {
+                    window.location.href = 'login.html';
+                    return false;
+                }
+            } catch (e) {
+                // Invalid user data, redirect to login
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Run authentication check immediately
+        if (!checkAuthenticationAndRedirect()) {
+            // Stop execution if redirecting
+            throw new Error('Authentication required');
+        }
+    </script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        // Messages page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load real conversations from API
+            let conversations = [];
+            let messages = {};
+            let currentConversationId = null;
+            let currentUser = null;
+
+            // Load user profile
+            async function loadUserProfile() {
+                try {
+                    if (window.apiClient && window.apiClient.getCurrentUser) {
+                        currentUser = await window.apiClient.getCurrentUser();
+                        // Ensure _id exists (might be 'id' instead)
+                        if (!currentUser._id && currentUser.id) {
+                            currentUser._id = currentUser.id;
+                        }
+                        console.log('Current user loaded:', currentUser);
+                        console.log('Current user _id:', currentUser._id);
+                    }
+                } catch (error) {
+                    console.error('Error loading user profile:', error);
+                }
+            }
+
+            // Load conversations from API
+            async function loadConversations() {
+                const container = document.getElementById('conversations-list');
+                if (!container) return;
+
+                // Show loading state
+                container.innerHTML = '<div class="loading">Loading chats...</div>';
+
+                try {
+                    if (window.apiClient && window.apiClient.get) {
+                        // Get message threads from API
+                        const response = await window.apiClient.get('/messages/threads');
+                        
+                        if (response.success && response.data) {
+                            conversations = response.data;
+                            console.log('Conversations loaded:', conversations);
+                            
+                            if (conversations.length === 0) {
+                                container.innerHTML = `
+                                    <div class="empty-state">
+                                        <i class="fas fa-comments"></i>
+                                        <h3>No Chats Yet</h3>
+                                        <p>Start a conversation by connecting with other students!</p>
+                                        <button class="btn btn-primary" onclick="window.location.href='marketplace.html'">Browse Skills</button>
+                                    </div>
+                                `;
+                                return;
+                            }
+
+                            container.innerHTML = '';
+                            
+                            // Track unique conversations to prevent duplicates
+                            const renderedConversations = new Set();
+                            
+                            conversations.forEach(conversation => {
+                                // Skip if already rendered
+                                if (renderedConversations.has(conversation._id)) {
+                                    console.warn('Duplicate conversation skipped:', conversation._id);
+                                    return;
+                                }
+                                
+                                // Ensure currentUser has _id
+                                if (!currentUser || !currentUser._id) {
+                                    console.error('Current user not loaded properly');
+                                    return;
+                                }
+                                
+                                // Debug: Log raw participant data
+                                console.log('=== Conversation:', conversation._id, '===');
+                                console.log('Current user:', currentUser);
+                                conversation.participants.forEach((p, idx) => {
+                                    console.log(`Participant ${idx}:`, {
+                                        userId: p.user?._id,
+                                        userName: p.user?.name,
+                                        userIdType: typeof p.user?._id,
+                                        currentUserIdType: typeof currentUser._id,
+                                        isMatch: p.user?._id === currentUser._id,
+                                        stringMatch: String(p.user?._id) === String(currentUser._id)
+                                    });
+                                });
+                                
+                                // Check if this is a self-conversation (both participants are the same)
+                                const uniqueUserIds = new Set(
+                                    conversation.participants
+                                        .filter(p => p.user && p.user._id)
+                                        .map(p => String(p.user._id))
+                                );
+                                
+                                if (uniqueUserIds.size < 2) {
+                                    console.warn('Skipping self-conversation or invalid conversation:', conversation._id);
+                                    return;
+                                }
+                                
+                                // Find the other participant (not current user) - use string comparison
+                                const otherParticipant = conversation.participants.find(
+                                    p => p.user && p.user._id && String(p.user._id) !== String(currentUser._id)
+                                );
+                                
+                                console.log('Other participant found:', otherParticipant);
+                                
+                                // Skip if no other participant found
+                                if (!otherParticipant) {
+                                    console.warn('No other participant found for conversation:', conversation._id);
+                                    return;
+                                }
+                                
+                                const displayName = otherParticipant.user.name || 'Unknown User';
+                                const avatar = otherParticipant.user.profileImage || 'fas fa-user';
+                                const lastMessage = conversation.lastMessage ? conversation.lastMessage.content : 'No messages yet';
+                                const timestamp = conversation.lastMessage ? 
+                                    new Date(conversation.lastMessage.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 
+                                    'Just now';
+                                const unreadCount = conversation.stats && conversation.stats.unreadCount ? 
+                                    conversation.stats.unreadCount : 0;
+
+                                const conversationItem = document.createElement('div');
+                                conversationItem.className = `conversation-item ${unreadCount > 0 ? 'unread' : ''}`;
+                                conversationItem.dataset.conversationId = conversation._id;
+                                
+                                conversationItem.innerHTML = `
+                                    <div class="conversation-avatar">
+                                        <i class="${avatar}"></i>
+                                    </div>
+                                    <div class="conversation-content">
+                                        <div class="conversation-header">
+                                            <h3>${displayName}</h3>
+                                            <span class="conversation-time">${timestamp}</span>
+                                        </div>
+                                        <div class="conversation-preview">
+                                            <p>${lastMessage}</p>
+                                            ${unreadCount > 0 ? `<span class="unread-count">${unreadCount}</span>` : ''}
+                                        </div>
+                                    </div>
+                                `;
+
+                                conversationItem.addEventListener('click', function() {
+                                    selectConversation(conversation._id);
+                                });
+
+                                container.appendChild(conversationItem);
+                                renderedConversations.add(conversation._id);
+                            });
+                        } else {
+                            throw new Error(response.message || 'Failed to load conversations');
+                        }
+                    } else {
+                        // Fallback to mock data
+                        container.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-comments"></i>
+                                <h3>No Chats Yet</h3>
+                                <p>Start a conversation by connecting with other students!</p>
+                                <button class="btn btn-primary" onclick="window.location.href='marketplace.html'">Browse Skills</button>
+                            </div>
+                        `;
+                    }
+                } catch (error) {
+                    console.error('Error loading conversations:', error);
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Error Loading Chats</h3>
+                            <p>Failed to load conversations. Please try again later.</p>
+                            <button class="btn btn-primary" onclick="loadConversations()">Retry</button>
+                        </div>
+                    `;
+                }
+            }
+
+            // Select conversation
+            async function selectConversation(conversationId) {
+                currentConversationId = conversationId;
+                
+                // Update conversation selection UI
+                document.querySelectorAll('.conversation-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                const activeItem = document.querySelector(`[data-conversation-id="${conversationId}"]`);
+                if (activeItem) {
+                    activeItem.classList.add('active');
+                }
+
+                // Show active conversation
+                document.getElementById('no-conversation').style.display = 'none';
+                const activeConv = document.getElementById('active-conversation');
+                activeConv.style.display = 'flex'; // Use flex to ensure proper layout
+
+                // Load conversation details
+                try {
+                    if (window.apiClient && window.apiClient.get) {
+                        // Get conversation details using the correct endpoint
+                        const threadResponse = await window.apiClient.get(`/messages/threads/${conversationId}`);
+                        
+                        if (threadResponse.success && threadResponse.data) {
+                            const thread = threadResponse.data;
+                            
+                            // Find the other participant
+                            const otherParticipant = thread.participants.find(
+                                p => p.user._id !== currentUser._id
+                            );
+                            
+                            const displayName = otherParticipant ? otherParticipant.user.name : 'Unknown User';
+                            const isOnline = otherParticipant ? otherParticipant.isOnline : false;
+                            const avatar = otherParticipant ? otherParticipant.user.profileImage : 'fas fa-user';
+                            
+                            // Update conversation header
+                            document.getElementById('conversation-name').textContent = displayName;
+                            document.getElementById('conversation-status').textContent = isOnline ? 'Online' : 'Offline';
+                            document.getElementById('conversation-avatar-icon').className = avatar.includes('fa-') ? avatar : 'fas fa-user';
+                        }
+                        
+                        // Load messages for this conversation
+                        await loadMessages(conversationId);
+                    }
+                } catch (error) {
+                    console.error('Error loading conversation details:', error);
+                }
+            }
+
+            // Load messages
+            async function loadMessages(conversationId) {
+                const container = document.getElementById('messages-area');
+                if (!container) return;
+
+                // Show loading state
+                container.innerHTML = '<div class="loading">Loading messages...</div>';
+
+                try {
+                    if (window.apiClient && window.apiClient.get) {
+                        // Get messages for this conversation
+                        // We need to get the other participant's ID from the thread
+                        const thread = conversations.find(c => c._id === conversationId);
+                        if (thread) {
+                            // Find the other participant
+                            const otherParticipant = thread.participants.find(
+                                p => p.user._id !== currentUser._id
+                            );
+                            
+                            if (otherParticipant) {
+                                const response = await window.apiClient.get(`/messages/conversation/${otherParticipant.user._id}`);
+                                
+                                if (response.success && response.data) {
+                                    const conversationMessages = response.data;
+                                    console.log('Messages loaded:', conversationMessages);
+                                    
+                                    if (conversationMessages.length === 0) {
+                                        container.innerHTML = `
+                                            <div class="empty-state">
+                                                <i class="fas fa-comments"></i>
+                                                <p>No messages yet. Start the conversation!</p>
+                                            </div>
+                                        `;
+                                    } else {
+                                        container.innerHTML = '';
+                                        
+                                        // Group messages by date
+                                        const messagesByDate = {};
+                                        conversationMessages.forEach(message => {
+                                            const date = new Date(message.createdAt);
+                                            const dateKey = date.toDateString(); // Use date string as key
+                                            
+                                            if (!messagesByDate[dateKey]) {
+                                                messagesByDate[dateKey] = [];
+                                            }
+                                            messagesByDate[dateKey].push(message);
+                                        });
+                                        
+                                        // Display messages in chronological order (oldest first)
+                                        Object.keys(messagesByDate).sort((a, b) => {
+                                            return new Date(a) - new Date(b);
+                                        }).forEach(dateKey => {
+                                            const messages = messagesByDate[dateKey];
+                                            
+                                            // Add date header
+                                            const dateHeader = document.createElement('div');
+                                            dateHeader.className = 'message-date-header';
+                                            dateHeader.textContent = formatDateHeader(new Date(dateKey));
+                                            container.appendChild(dateHeader);
+                                            
+                                            // Add messages for this date
+                                            messages.forEach(message => {
+                                                const isOwn = message.sender._id === currentUser._id;
+                                                const timestamp = new Date(message.createdAt);
+                                                const timeString = timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                                
+                                                const messageElement = document.createElement('div');
+                                                messageElement.className = `message-wrapper ${isOwn ? 'message-right' : 'message-left'}`;
+                                                
+                                                // Check if message has attachments
+                                                let messageContent = '';
+                                                if (message.attachments && message.attachments.length > 0) {
+                                                    const attachment = message.attachments[0];
+                                                    const fileUrl = `http://localhost:5001${attachment.url}`;
+                                                    
+                                                    // Check if it's an image
+                                                    if (message.type === 'image') {
+                                                        messageContent = `
+                                                            <div class="message-attachment">
+                                                                <img src="${fileUrl}" alt="${attachment.filename}" class="message-image" onclick="window.open('${fileUrl}', '_blank')">
+                                                            </div>
+                                                            ${message.content && !message.content.includes('Sent a file:') ? `<p>${message.content}</p>` : ''}
+                                                        `;
+                                                    } else {
+                                                        // File attachment
+                                                        messageContent = `
+                                                            <div class="message-attachment">
+                                                                <a href="${fileUrl}" target="_blank" class="file-link">
+                                                                    <i class="fas fa-file"></i>
+                                                                    <span>${attachment.filename}</span>
+                                                                </a>
+                                                            </div>
+                                                            ${message.content && !message.content.includes('Sent a file:') ? `<p>${message.content}</p>` : ''}
+                                                        `;
+                                                    }
+                                                } else {
+                                                    messageContent = `<p>${message.content}</p>`;
+                                                }
+                                                
+                                                messageElement.innerHTML = `
+                                                    <div class="message ${isOwn ? 'message-own' : 'message-other'}">
+                                                        <div class="message-bubble">
+                                                            ${messageContent}
+                                                            <span class="message-time">${timeString}</span>
+                                                        </div>
+                                                    </div>
+                                                `;
+
+                                                container.appendChild(messageElement);
+                                            });
+                                        });
+                                    }
+
+                                    // Scroll to bottom to show most recent messages
+                                    setTimeout(() => {
+                                        container.scrollTop = container.scrollHeight;
+                                    }, 100);
+                                    
+                                    // Mark conversation as read
+                                    await markConversationAsRead(conversationId);
+                                } else {
+                                    throw new Error(response.message || 'Failed to load messages');
+                                }
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading messages:', error);
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Failed to load messages</p>
+                        </div>
+                    `;
+                }
+            }
+
+            // Helper function to format date headers like WhatsApp
+            function formatDateHeader(date) {
+                const today = new Date();
+                const yesterday = new Date(today);
+                yesterday.setDate(yesterday.getDate() - 1);
+                
+                // Check if it's today
+                if (date.toDateString() === today.toDateString()) {
+                    return 'Today';
+                }
+                
+                // Check if it's yesterday
+                if (date.toDateString() === yesterday.toDateString()) {
+                    return 'Yesterday';
+                }
+                
+                // Check if it's within the last 7 days
+                const oneWeekAgo = new Date(today);
+                oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+                
+                if (date >= oneWeekAgo) {
+                    // Return day of the week
+                    return date.toLocaleDateString('en-US', { weekday: 'long' });
+                }
+                
+                // Return full date
+                return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            }
+
+            // Mark conversation as read
+            async function markConversationAsRead(conversationId) {
+                try {
+                    if (window.apiClient && window.apiClient.put) {
+                        // Find the thread
+                        const thread = conversations.find(c => c._id === conversationId);
+                        if (thread) {
+                            // Find the other participant - use string comparison
+                            const otherParticipant = thread.participants.find(
+                                p => p.user && p.user._id && String(p.user._id) !== String(currentUser._id)
+                            );
+                            
+                            if (otherParticipant) {
+                                await window.apiClient.put('/messages/mark-read', {
+                                    senderId: otherParticipant.user._id
+                                });
+                                
+                                // Just update the conversation item's unread badge without reloading
+                                const conversationItem = document.querySelector(`[data-conversation-id="${conversationId}"]`);
+                                if (conversationItem) {
+                                    const unreadBadge = conversationItem.querySelector('.unread-count');
+                                    if (unreadBadge) {
+                                        unreadBadge.remove();
+                                    }
+                                    conversationItem.classList.remove('unread');
+                                }
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error marking conversation as read:', error);
+                }
+            }
+
+            // Send message
+            async function sendMessage() {
+                const messageInput = document.getElementById('message-input');
+                const content = messageInput.value.trim();
+                
+                // Allow sending if there's either content or a file
+                if ((!content && !selectedFile) || !currentConversationId) return;
+
+                try {
+                    // Find the thread to get recipient ID
+                    const thread = conversations.find(c => c._id === currentConversationId);
+                    if (!thread) return;
+                    
+                    // Find the other participant
+                    const otherParticipant = thread.participants.find(
+                        p => p.user._id !== currentUser._id
+                    );
+                    
+                    if (!otherParticipant) return;
+                    
+                    let response;
+                    
+                    // If there's a file, use the upload endpoint
+                    if (selectedFile) {
+                        const formData = new FormData();
+                        formData.append('file', selectedFile);
+                        formData.append('recipient', otherParticipant.user._id);
+                        if (content) {
+                            formData.append('content', content);
+                        }
+                        
+                        // Get token
+                        const token = localStorage.getItem('access_token') || localStorage.getItem('authToken');
+                        
+                        // Upload file with message
+                        const uploadResponse = await fetch('http://localhost:5001/api/messages/upload', {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: formData
+                        });
+                        
+                        response = await uploadResponse.json();
+                    } else {
+                        // Regular text message
+                        if (window.apiClient && window.apiClient.sendMessage) {
+                            response = await window.apiClient.sendMessage({
+                                recipient: otherParticipant.user._id,
+                                content: content
+                            });
+                        }
+                    }
+                    
+                    if (response && response.success) {
+                        // Clear input
+                        messageInput.value = '';
+                        messageInput.style.height = 'auto';
+                        
+                        // Clear file selection
+                        if (selectedFile) {
+                            selectedFile = null;
+                            document.getElementById('file-input').value = '';
+                            document.getElementById('file-preview').style.display = 'none';
+                        }
+                        
+                        // Add message to UI immediately for better UX
+                        const messagesArea = document.getElementById('messages-area');
+                        const timestamp = new Date();
+                        const timeString = timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        
+                        // Check if we need to add a date header for today
+                        const today = new Date();
+                        const todayKey = today.toDateString();
+                        let needsDateHeader = false;
+                        
+                        // Check if there are any messages already
+                        const existingMessages = messagesArea.querySelectorAll('.message-wrapper');
+                        if (existingMessages.length === 0) {
+                            needsDateHeader = true;
+                        } else {
+                            // Check if the last date header is for today
+                            const lastDateHeader = messagesArea.querySelector('.message-date-header:last-of-type');
+                            if (lastDateHeader) {
+                                // This is a bit complex to check, so we'll just add the message without header
+                                // The full reload will handle proper grouping
+                            }
+                        }
+                        
+                        // Add date header if needed
+                        if (needsDateHeader) {
+                            const dateHeader = document.createElement('div');
+                            dateHeader.className = 'message-date-header';
+                            dateHeader.textContent = 'Today';
+                            messagesArea.appendChild(dateHeader);
+                        }
+                        
+                        const messageElement = document.createElement('div');
+                        messageElement.className = 'message-wrapper message-right';
+                        
+                        // Check if message has attachments
+                        let messageContent = '';
+                        if (response.data.attachments && response.data.attachments.length > 0) {
+                            const attachment = response.data.attachments[0];
+                            const fileUrl = `http://localhost:5001${attachment.url}`;
+                            
+                            // Check if it's an image
+                            if (response.data.type === 'image') {
+                                messageContent = `
+                                    <div class="message-attachment">
+                                        <img src="${fileUrl}" alt="${attachment.filename}" class="message-image" onclick="window.open('${fileUrl}', '_blank')">
+                                    </div>
+                                    ${content ? `<p>${content}</p>` : ''}
+                                `;
+                            } else {
+                                // File attachment
+                                messageContent = `
+                                    <div class="message-attachment">
+                                        <a href="${fileUrl}" target="_blank" class="file-link">
+                                            <i class="fas fa-file"></i>
+                                            <span>${attachment.filename}</span>
+                                        </a>
+                                    </div>
+                                    ${content ? `<p>${content}</p>` : ''}
+                                `;
+                            }
+                        } else {
+                            messageContent = `<p>${response.data.content}</p>`;
+                        }
+                        
+                        messageElement.innerHTML = `
+                            <div class="message message-own">
+                                <div class="message-bubble">
+                                    ${messageContent}
+                                    <span class="message-time">${timeString}</span>
+                                </div>
+                            </div>
+                        `;
+                        messagesArea.appendChild(messageElement);
+                        
+                        // Scroll to bottom
+                        messagesArea.scrollTop = messagesArea.scrollHeight;
+                        
+                        // Update conversation list without reloading everything
+                        const displayContent = response.data.attachments && response.data.attachments.length > 0 
+                            ? `📎 ${response.data.attachments[0].filename}` 
+                            : response.data.content;
+                        updateConversationPreview(currentConversationId, displayContent, timestamp);
+                    } else {
+                        throw new Error(response.message || 'Failed to send message');
+                    }
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    alert('Failed to send message. Please try again.');
+                }
+            }
+            
+            // Update conversation preview in the list
+            function updateConversationPreview(conversationId, lastMessage, timestamp) {
+                const conversationItem = document.querySelector(`[data-conversation-id="${conversationId}"]`);
+                if (conversationItem) {
+                    const previewElement = conversationItem.querySelector('.conversation-preview p');
+                    const timeElement = conversationItem.querySelector('.conversation-time');
+                    
+                    if (previewElement) {
+                        previewElement.textContent = lastMessage;
+                    }
+                    if (timeElement) {
+                        timeElement.textContent = timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    }
+                    
+                    // Move conversation to top of list only if it's not already at the top
+                    const conversationsList = document.getElementById('conversations-list');
+                    const firstItem = conversationsList.firstElementChild;
+                    if (firstItem !== conversationItem) {
+                        conversationsList.insertBefore(conversationItem, firstItem);
+                    }
+                }
+                // Don't reload conversations - the conversation should already exist
+                // If it doesn't exist, it means we're in a new conversation which shouldn't happen here
+            }
+
+            // Event listeners
+            document.getElementById('send-message-btn').addEventListener('click', sendMessage);
+            document.getElementById('message-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+            
+            // File attach button
+            let selectedFile = null;
+            document.getElementById('attach-file-btn').addEventListener('click', function() {
+                document.getElementById('file-input').click();
+            });
+            
+            document.getElementById('file-input').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    selectedFile = file;
+                    // Show file preview
+                    document.getElementById('file-name').textContent = file.name;
+                    document.getElementById('file-preview').style.display = 'flex';
+                }
+            });
+            
+            document.getElementById('remove-file-btn').addEventListener('click', function() {
+                selectedFile = null;
+                document.getElementById('file-input').value = '';
+                document.getElementById('file-preview').style.display = 'none';
+            });
+
+            // Auto-resize textarea
+            document.getElementById('message-input').addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+
+            // New message modal
+            document.getElementById('new-message-btn').addEventListener('click', function() {
+                document.getElementById('new-message-modal').style.display = 'block';
+            });
+
+            // Close modals
+            document.querySelectorAll('.close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+
+            // Conversation info modal
+            document.getElementById('conversation-info-btn').addEventListener('click', function() {
+                if (!currentConversationId) return;
+                
+                // Find the thread
+                const thread = conversations.find(c => c._id === currentConversationId);
+                if (thread) {
+                    // Find the other participant
+                    const otherParticipant = thread.participants.find(
+                        p => p.user._id !== currentUser._id
+                    );
+                    
+                    if (otherParticipant) {
+                        const user = otherParticipant.user;
+                        document.getElementById('participant-name').textContent = user.name;
+                        document.getElementById('participant-major').textContent = user.major || 'Student';
+                        document.getElementById('participant-rating-text').textContent = `(${user.rating?.average || '0.0'})`;
+                        
+                        // Update stars
+                        const starsContainer = document.getElementById('participant-stars');
+                        starsContainer.innerHTML = '';
+                        const rating = user.rating?.average || 0;
+                        for (let i = 1; i <= 5; i++) {
+                            const star = document.createElement('i');
+                            star.className = i <= rating ? 'fas fa-star' : 'far fa-star';
+                            starsContainer.appendChild(star);
+                        }
+                        
+                        // Update shared skills (mock data for now)
+                        const skillsContainer = document.getElementById('shared-skills');
+                        skillsContainer.innerHTML = '';
+                        // In a real implementation, you would fetch shared skills from the API
+                        const mockSkills = ['Python', 'Web Development', 'Mathematics'];
+                        mockSkills.forEach(skill => {
+                            const skillTag = document.createElement('span');
+                            skillTag.className = 'skill-tag';
+                            skillTag.textContent = skill;
+                            skillsContainer.appendChild(skillTag);
+                        });
+                    }
+                }
+                
+                document.getElementById('conversation-info-modal').style.display = 'block';
+            });
+
+            // Initialize page
+            loadUserProfile().then(() => {
+                loadConversations();
+            });
+            
+            // Update navigation
+            if (typeof updateNavigation === 'function') {
+                updateNavigation();
+            }
+        });
+    </script>
+</body>
+</html>
